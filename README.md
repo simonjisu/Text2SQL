@@ -30,6 +30,8 @@ Gathering information for **Semantic Parsing** problem, especially for `Text to 
 |12|[Bridging Textual and Tabular Data for Cross-Domain Text-to-SQL Semantic Parsing](https://arxiv.org/abs/2012.12627)| |
 |13|[CoSQL: A Conversational Text-to-SQL Challenge Towards Cross-Domain Natural Language Interfaces to Databases](https://arxiv.org/abs/1909.05378)| |
 |14|[Robust Text-to-SQL Generation with Execution-Guided Decoding](https://arxiv.org/abs/1807.03100)| |
+|15|[A Comprehensive Exploration on WikiSQL with Table-Aware Word Contextualization](https://arxiv.org/abs/1902.01069)| |
+
 
 # Applications
 
