@@ -31,8 +31,9 @@ Gathering information for **Semantic Parsing** problem, especially for `Text to 
 |13|[CoSQL: A Conversational Text-to-SQL Challenge Towards Cross-Domain Natural Language Interfaces to Databases](https://arxiv.org/abs/1909.05378)| |
 |14|[Robust Text-to-SQL Generation with Execution-Guided Decoding](https://arxiv.org/abs/1807.03100)| |
 |15|[A Comprehensive Exploration on WikiSQL with Table-Aware Word Contextualization](https://arxiv.org/abs/1902.01069)| |
-
+|16|Hybrid Ranking Network for Text-to-SQL| |
 
 # Applications
 
-TBD
+- Photon(Salesforce AI Research): [http://naturalsql.com/](http://naturalsql.com/)
+    - `2021.04.12` NL queries is not working. SQL program is working.
