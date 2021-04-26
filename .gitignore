@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+Notebooks/private/*
+Notebooks/database/*
+Notebooks/docs_cache/*
