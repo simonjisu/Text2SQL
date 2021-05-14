@@ -27,7 +27,7 @@ Gathering information for **Semantic Parsing** problem, especially for `Text to 
 |09|[Language Models as Knowledge Bases?](https://arxiv.org/abs/1909.01066)| |
 |10|[Semantic Evaluation for Text-to-SQL with Distilled Test Suites](https://arxiv.org/abs/2010.02840v1)| |
 |11|[TRANX: A Transition-based Neural Abstract Syntax Parser for Semantic Parsing and Code Generation](https://arxiv.org/abs/1810.02720)| |
-|12|[Bridging Textual and Tabular Data for Cross-Domain Text-to-SQL Semantic Parsing](https://arxiv.org/abs/2012.12627)| |
+|12|[Bridging Textual and Tabular Data for Cross-Domain Text-to-SQL Semantic Parsing](https://arxiv.org/abs/2012.12627)| [link](MD/12.md)  |
 |13|[CoSQL: A Conversational Text-to-SQL Challenge Towards Cross-Domain Natural Language Interfaces to Databases](https://arxiv.org/abs/1909.05378)| |
 |14|[Robust Text-to-SQL Generation with Execution-Guided Decoding](https://arxiv.org/abs/1807.03100)| |
 |15|[A Comprehensive Exploration on WikiSQL with Table-Aware Word Contextualization](https://arxiv.org/abs/1902.01069)| [link](MD/15.md) |
