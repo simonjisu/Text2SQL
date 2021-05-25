@@ -129,6 +129,5 @@ dmypy.json
 .pyre/
 
 Notebooks/private/*
-Notebooks/database/*
 Notebooks/docs_cache/*
 .DS_Store
