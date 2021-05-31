@@ -130,4 +130,5 @@ dmypy.json
 
 Notebooks/private/*
 Notebooks/docs_cache/*
+Notebooks/data/*
 .DS_Store
