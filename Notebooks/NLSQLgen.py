@@ -26,7 +26,7 @@ def time_to_nl(time):
     list.append(f'{th}기의')
     list.append(f'제{th}기')
     list.append(f'제{th}기의')
-    return list 
+    return list
         
 def entity_to_nl(entity):
     list = []
@@ -49,6 +49,7 @@ def key_to_nl(time, entity, account):
                 for q in question_to_nl():
                     
                     lists.append(f'{t} {e} {a} {q}')
+                    lists.append(f'{e} {t} {a} {q}')
 
     return lists
 
