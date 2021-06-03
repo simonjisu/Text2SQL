@@ -8,7 +8,7 @@ schema_re = re.compile(r'\((.+)\)')
 num_re = re.compile(r'[-+]?\d*\.\d+|\d+')
 
 db_path = Path("./private/db")
-db = records.Database(f"sqlite:///{db_path / 'samsung_new.db'}")
+db = records.Database(f"sqlite:///{db_path /'samsung_new.db'}")
 
 # From Variable to Natural Language 
 def time_to_nl(time):   
@@ -54,10 +54,18 @@ def key_to_nl(time, entity, account):
     return lists
 
 def key_to_query(time, entity, account):
-    q = f"SELECT thstrm_amount FROM receipts WHERE account_nm = '{account}' AND bsns_year = {time}"
-    return q 
+    lists = []
+    time_ = time + 1
+    q_prev = f"SELECT frmtrm_amount FROM receipts WHERE account_nm = '{account}' AND bsns_year = {time_}"
+    q_this = f"SELECT thstrm_amount FROM receipts WHERE account_nm = '{account}' AND bsns_year = {time}"
+    lists.append(q_prev)
+    lists.append(q_this)
+    return lists
+
 def query_to_answer(query):
-    ans = db.query(query).all()[0].as_dict()['thstrm_amount'] 
+    ans = list(db.query(query).all()[0].as_dict().values())[0]
+    # list(db.query("SELECT thstrm_amount FROM receipts WHERE account_nm = '유동자산' AND bsns_year = 2020").all()[0].as_dict().values())[0]
+    # ans = db.query(query).all()[0].as_dict()['thstrm_amount'] 
     return ans
 
 
@@ -71,15 +79,27 @@ for t in times:
     for e in entities:
         for a in accounts:
             nls   = key_to_nl(t, e, a)
-            query = key_to_query(t, e, a)
-            try:
-                ans   = str(query_to_answer(query)) 
-            except:
-                pass
-            for nl in nls:
-                s = [nl, query, ans]
-                # print("\t".join(s) + "\n") 
-                nlsqls.append(s)
+            querys = key_to_query(t, e, a)
+            # print('querys: ',querys)
+            for query in querys:
+                try:
+                    ans   = str(query_to_answer(query)) 
+                    # print('haha')
+
+                except:
+                    # print(query)
+                    ans   = False
+                    
+                    pass
+
+                for nl in nls:
+                    if ans:
+                        s = [nl, query, ans]
+                        # print("\t".join(s) + "\n") 
+                        nlsqls.append(s)
+                    else:
+                        # print(query)
+                        pass
 
 import csv 
 with open('NLSQL.tsv', 'wt') as f:
