@@ -83,6 +83,6 @@ for t in times:
 
 import csv 
 with open('NLSQL.tsv', 'wt') as f:
-    writer = csv.writer(f)
+    writer = csv.writer(f, delimiter='\t')
     for nlsql in nlsqls:
         writer.writerow(nlsql) 
