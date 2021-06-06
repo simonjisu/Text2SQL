@@ -9,7 +9,7 @@ schema_re = re.compile(r'\((.+)\)')
 class DBEngine:
     
     agg_ops = ["", "MAX", "MIN", "COUNT", "SUM", "AVG"]
-    cond_ops = ["=", ">", "<", "OP", ">=", "<="]
+    cond_ops = ["=", ">", "<", "OP"]#, ">=", "<="]
     cond_ops_dict = {"eq": "=", "lt": "<",  "lte": "<=", "gt": ">", "gte": ">=", "neq": "<>"}
 
     syms = ["SELECT", "WHERE", "AND", "COL", "TABLE", "CAPTION", "PAGE", "SECTION", "OP", "COND", "QUESTION", "AGG", "AGGOPS", "CONDOPS"]
