@@ -136,3 +136,4 @@ Notebooks/ckpt/*
 logs/*
 ckpt/*
 .vscode
+train.log
