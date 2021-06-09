@@ -1,8 +1,7 @@
 import torch
 import torch.nn as nn
-from AttentionModule import C2QAttention, SelfAttention
+from .AttentionModule import C2QAttention, SelfAttention
 from typing import List, Dict, Any, Tuple, Union
-
 
 class SelectDecoder(nn.Module):
     r"""SELECT Decoder"""
@@ -25,7 +24,7 @@ class SelectDecoder(nn.Module):
             nn.Linear(2*hidden_size, output_size)
         )
 
-    def forward(self, question_padded: torch.Tensor, header_padded: torch.Tensor, col_padded: torch.Tensor, question_lengths: List[int], col_lengths: List[int], rt_attn=False):
+    def forward(self, question_padded, header_padded, col_padded, question_lengths: List[int], col_lengths: List[int], rt_attn=False):
         r"""
         predict column index
         """
@@ -67,7 +66,7 @@ class AggDecoder(nn.Module):
             nn.Linear(hidden_size, output_size)
         )
                 
-    def forward(self, question_padded: torch.Tensor, header_padded: torch.Tensor, col_padded: torch.Tensor, question_lengths: List[int], col_lengths: List[int], select_idxes: List[int], rt_attn=False):
+    def forward(self, question_padded, header_padded, col_padded, question_lengths: List[int], col_lengths: List[int], select_idxes: List[int], rt_attn=False):
         r"""
         predict agg index
         select_prob: selected argmax indices of select_output score
@@ -118,8 +117,7 @@ class WhereNumDecoder(nn.Module):
             nn.Linear(hidden_size, output_size)
         )
         
-        
-    def forward(self, question_padded: torch.Tensor, header_padded: torch.Tensor, col_padded: torch.Tensor, question_lengths: List[int], col_lengths: List[int], rt_attn=False):
+    def forward(self, question_padded, header_padded, col_padded, question_lengths: List[int], col_lengths: List[int], rt_attn=False):
         r"""
         predict agg index
         select_prob: selected argmax indices of select_output score
@@ -154,6 +152,7 @@ class WhereColumnDecoder(nn.Module):
         self.output_size = output_size
         self.num_layers = num_layers
         self.dropout_ratio = dropout_ratio
+        self.max_where_conds = max_where_conds
 
         self.lstm_q = nn.LSTM(input_size, int(hidden_size / 2), num_layers, dropout=dropout_ratio, batch_first=True, bidirectional=True)
         self.lstm_h = nn.LSTM(input_size, int(hidden_size / 2), num_layers, dropout=dropout_ratio, batch_first=True, bidirectional=True)
@@ -166,7 +165,7 @@ class WhereColumnDecoder(nn.Module):
             nn.Linear(2*hidden_size, output_size)
         )
 
-    def forward(self, question_padded: torch.Tensor, header_padded: torch.Tensor, col_padded: torch.Tensor, question_lengths: List[int], col_lengths: List[int], rt_attn=False):
+    def forward(self, question_padded, header_padded, col_padded, question_lengths: List[int], col_lengths: List[int], rt_attn=False):
         r"""
         predict column index
         """
@@ -209,12 +208,13 @@ class WhereOpDecoder(nn.Module):
             nn.Linear(2*hidden_size, output_size)
         )
     
-    def forward(self, question_padded: torch.Tensor, header_padded: torch.Tensor, col_padded: torch.Tensor, question_lengths: List[int], where_nums: List[int], where_col_idxes: List[List[int]], rt_attn=False):
+    def forward(self, question_padded, header_padded, col_padded, question_lengths: List[int], where_nums: List[int], where_col_idxes: List[List[int]], rt_attn=False):
         r"""
         predict agg index
         select_prob: selected argmax indices of select_output score
         max_where_col_nums is settled at WhereColumnDecoder, but it can be lower than or equal to `max_where_conds`
         """
+        device = col_padded.device
         batch_size, n_col, _ = col_padded.size()
         o_q, (h_q, c_q) = self.lstm_q(question_padded)  # o_q: (B, T_q, H)
         o_c, (h_c, c_c) = self.lstm_h(col_padded)  # o_c: (B, T_c, H)
@@ -223,7 +223,7 @@ class WhereOpDecoder(nn.Module):
         header_summary = torch.cat([h for h in h_h[-2:]], dim=1).unsqueeze(1).repeat(1, n_col, 1)  # (B, T_c, H)
         col_context = torch.cat([o_c, header_summary], dim=2)  # (B, T_c, 2H)
         col_context = self.col_context_linear(col_context)  # (B, T_c, H)
-        col_context_padded = self.get_context_padded(col_context, where_nums, where_col_idxes)  # (B, max_where_col_nums, H)
+        col_context_padded = self.get_context_padded(col_context, where_nums, where_col_idxes, device)  # (B, max_where_col_nums, H)
         
         col_q_context, attn = self.col2question_attn(col_context_padded, o_q, question_lengths, where_nums, rt_attn)  # (B, max_where_col_nums, H), (B, max_where_col_nums, T_q)
         
@@ -232,19 +232,19 @@ class WhereOpDecoder(nn.Module):
         # TODO: add penalty for padded header(column) information
         return output
         
-    def get_context_padded(self, col_context, where_nums, where_col_idxes):
+    def get_context_padded(self, col_context, where_nums, where_col_idxes, device: str="cpu"):
         r"""
         Select the where column index and pad if some batch doesn't match the max length of tensor
         In case for have different where column lengths
         """
         batch_size, n_col, hidden_size = col_context.size()
-        max_where_col_nums = max(where_nums)
+        max_where_col_nums = max(where_nums) 
         batches = [col_context[i, batch_col] for i, batch_col in enumerate(where_col_idxes)]  # [(where_col_nums, hidden_size), ...]  len = B
         batches_padded = []
         for b in batches:
             where_col_nums = b.size(0)
             if where_col_nums < max_where_col_nums:
-                b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), hidden_size, device=col_context.device)], dim=0)
+                b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), hidden_size, device=device)], dim=0)
             else:
                 b_padded = b
             batches_padded.append(b_padded)  # (max_where_col_nums, hidden_size)
@@ -255,7 +255,7 @@ class WhereOpDecoder(nn.Module):
 class WhereValueDecoder(nn.Module):
     r"""WHERE Value Decoder"""
     def __init__(self, input_size: int, hidden_size: int, output_size: int, num_layers: int=2, dropout_ratio: float=0.3, max_where_conds: int=4, n_cond_ops: int=4,
-                 start_tkn_id: int=8002, end_tkn_id: int=8003, embedding_layer: torch.nn.modules.sparse.Embedding=None) -> None:                 
+                 start_tkn_id=8002, end_tkn_id=8003, embedding_layer=None) -> None:
         super().__init__()
         self.input_size = input_size
         self.hidden_size = hidden_size
@@ -277,6 +277,8 @@ class WhereValueDecoder(nn.Module):
         if embedding_layer is None:
             raise KeyError("Must initialize the embedding_layer to BertModel's word embedding layer")
         else:
+            if not isinstance(embedding_layer, torch.nn.modules.sparse.Embedding):
+                embedding_layer = embedding_layer.word_embeddings
             self.embedding_layer = embedding_layer
             vocab_size, bert_hidden_size = embedding_layer.weight.data.size()
             self.output_lstm_hidden_init_linear = nn.Linear(3*hidden_size, bert_hidden_size)
@@ -284,16 +286,17 @@ class WhereValueDecoder(nn.Module):
             self.output_lstm = nn.LSTM(bert_hidden_size, bert_hidden_size, 1, batch_first=True)
             self.output_linear = nn.Linear(bert_hidden_size, vocab_size)
             self.output_linear.weight.data = embedding_layer.weight.data
-
-    def forward(self, question_padded: torch.Tensor, header_padded: torch.Tensor, col_padded: torch.Tensor, question_lengths: List[int], where_nums: List[int], where_col_idxes: List[List[int]], where_op_idxes: List[List[int]], value_tkn_max_len=None, g_wv_tkns=None, rt_attn=False):
+        
+    def forward(self, question_padded, header_padded, col_padded, question_lengths: List[int], where_nums: List[int], where_col_idxes: List[List[int]], where_op_idxes: List[List[int]], value_tkn_max_len=None, g_wv_tkns=None, rt_attn=False):
         r"""
         predict agg index
         select_prob: selected argmax indices of select_output score
         max_where_col_nums is setted at WhereColumnDecoder
-        value_tkn_max_len = Test if None else Train
+        value_tkn_max_len = Train if None else Test
         g_wv_tkns = When Train should not be None
         
         """
+        device = col_padded.device
         batch_size, n_col, _ = col_padded.size()
         o_q, (h_q, c_q) = self.lstm_q(question_padded)  # o_q: (B, T_q, H)
         o_c, (h_c, c_c) = self.lstm_h(col_padded)  # o_c: (B, T_c, H)
@@ -302,34 +305,36 @@ class WhereValueDecoder(nn.Module):
         header_summary = torch.cat([h for h in h_h[-2:]], dim=1).unsqueeze(1).repeat(1, n_col, 1)  # (B, T_c, H)
         col_context = torch.cat([o_c, header_summary], dim=2)  # (B, T_c, 2H)
         col_context = self.col_context_linear(col_context)  # (B, T_c, H)
-        col_context_padded = self.get_context_padded(col_context, where_nums, where_col_idxes)  # (B, max_where_col_nums, H)
-        
+        col_context_padded = self.get_context_padded(col_context, where_nums, where_col_idxes, device)  # (B, max_where_col_nums, H)
+
         col_q_context, attn = self.col2question_attn(col_context_padded, o_q, question_lengths, where_nums, rt_attn)  # (B, max_where_col_nums, H), (B, max_where_col_nums, T_q)
-        where_op_one_hot_padded = self.get_where_op_one_hot_padded(where_op_idxes, where_nums, where_col_idxes, n_cond_ops=self.n_cond_ops)#.to(o_q.device)  # (B, max_where_col_nums, n_cond_ops)
+        where_op_one_hot_padded = self.get_where_op_one_hot_padded(
+            where_op_idxes, where_nums, where_col_idxes, n_cond_ops=self.n_cond_ops, device=device)  # (B, max_where_col_nums, n_cond_ops)
+
         where_op = self.where_op_linear(where_op_one_hot_padded)  # (B, max_where_col_nums, H)
-        
+
         vec = torch.cat([col_q_context, col_context_padded, where_op], dim=2)  # (B, max_where_col_nums, 3H)
         max_where_col_nums = vec.size(1)
         # predict each where_col
         total_scores = []
         for i in range(max_where_col_nums):
-            g_wv_tkns_i = torch.LongTensor([g_wv_tkns[b_idx][i] for b_idx in range(batch_size)]) if g_wv_tkns is not None else None  # (B, T_d_i)
+            g_wv_tkns_i = torch.LongTensor([g_wv_tkns[b_idx][i] for b_idx in range(batch_size)]).to(device) if g_wv_tkns is not None else None  # (B, T_d_i)
             vec_i = vec[:, i, :]  # (B, 3H)
             
             h_0 = self.output_lstm_hidden_init_linear(vec_i).unsqueeze(1).transpose(0, 1).contiguous()  # (B, 3H) -> (B, bert_H) -> (1, B, bert_H)
             c_0 = self.output_lstm_cell_init_linear(vec_i).unsqueeze(1).transpose(0, 1).contiguous()  # (B, 3H) -> (B, bert_H) -> (1, B, bert_H)
             
-            scores = self.decode_single_where_col(batch_size, h_0, c_0, value_tkn_max_len=value_tkn_max_len, g_wv_tkns_i=g_wv_tkns_i)  # (B, T_d_i, vocab_size)
+            scores = self.decode_single_where_col(batch_size, h_0, c_0, value_tkn_max_len=value_tkn_max_len, g_wv_tkns_i=g_wv_tkns_i, device=device)  # (B, T_d_i, vocab_size)
             total_scores.append(scores)
         
         # total_scores: [(B, T_d_i, vocab_size)] x max_where_col_nums
         return total_scores
     
-    def start_token(self, batch_size: int):
-        sos = torch.LongTensor([self.start_tkn_id]*batch_size).unsqueeze(1)  # (B, 1)
+    def start_token(self, batch_size, device):
+        sos = torch.LongTensor([self.start_tkn_id]*batch_size).unsqueeze(1).to(device)  # (B, 1)
         return sos
     
-    def decode_single_where_col(self, batch_size: int, h_0: torch.Tensor, c_0: torch.Tensor, value_tkn_max_len: Union[None, int]=None, g_wv_tkns_i: Union[None, List[List[int]]]=None):
+    def decode_single_where_col(self, batch_size, h_0, c_0, value_tkn_max_len=None, g_wv_tkns_i=None, device: str="cpu"):
         if value_tkn_max_len is None:
             # [Training] set the max length to gold token max length (already padded)
             max_len = len(g_wv_tkns_i[0])
@@ -337,28 +342,38 @@ class WhereValueDecoder(nn.Module):
             # [Testing]  don't know the max length
             max_len = value_tkn_max_len
             
-        sos = self.start_token(batch_size)  # (B, 1)
+        # Version2: left_batch_size = batch_size
+        
+        sos = self.start_token(batch_size, device)  # (B, 1)
         emb = self.embedding_layer(sos)  # (B, 1, bert_H)
         scores = [] 
         for i in range(max_len):
             o, (h, c) = self.output_lstm(emb, (h_0, c_0))  # h: (1, B, bert_H)  
             s = self.output_linear(h[-1, :]) # select last layer if use multiple rnn layers, h: (1, B, bert_H) -> (B, bert_H) -> s: (B, vocab_size)
             scores.append(s)
-            
             if g_wv_tkns_i is not None:
                 # [Training] Teacher Force model
                 pred = g_wv_tkns_i[:, i]  # (B, )
             else:
                 # [Testing]
-                pred = s.argmax(1)  # (1,) only for single batch_size
-                if pred.item() == self.end_tkn_id:
+                pred = s.argmax(1)  # (B, )
+                if (pred == self.end_tkn_id).sum() == batch_size:  # all stop
                     break
+                # Version2: Seperate all tokens
+                # if (pred == dd.end_tkn_id).sum() == left_batch_size:  # all stop
+                #     scores.append(s)
+                #     break
+                # else:
+                #     stop_mask = pred == dd.end_tkn_id
+                #     pred = pred[~stop_mask]
+                #     scores.append(pred)
+                #     left_batch_size -= stop_mask.sum().item()
                     
             emb = self.embedding_layer(pred.unsqueeze(1))  # (B, 1, bert_H)
-        
+            
         return torch.stack(scores).transpose(0, 1).contiguous() # (T_d_i, B, vocab_size) -> (B, T_d_i, vocab_size)
         
-    def get_context_padded(self, col_context: torch.Tensor, where_nums: List[int], where_col_idxes: List[List[int]]):
+    def get_context_padded(self, col_context: torch.Tensor, where_nums: List[int], where_col_idxes: List[List[int]], device: str="cpu"):
         r"""
         Select the where column index and pad if some batch doesn't match the max length of tensor
         In case for have different where column lengths
@@ -370,28 +385,31 @@ class WhereValueDecoder(nn.Module):
         for b in batches:
             where_col_nums = b.size(0)
             if where_col_nums < max_where_col_nums:
-                b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), hidden_size)], dim=0)
+                b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), hidden_size, device=device)], dim=0)
             else:
                 b_padded = b
             batches_padded.append(b_padded)  # (max_where_col_nums, hidden_size)
             
         return torch.stack(batches_padded) # (B, max_where_col_nums, hidden_size)
     
-    
-    def get_where_op_one_hot_padded(self, where_op_idxes: List[List[int]], where_nums: List[int], where_col_idxes: List[List[int]], n_cond_ops: int):
+    def get_where_op_one_hot_padded(self, where_op_idxes: List[List[int]], where_nums: List[int], where_col_idxes: List[List[int]], n_cond_ops: int, device: str="cpu"):
         r"""
         Turn where operation indexs into one hot encoded vectors
         In case for have different where column lengths
         """
         max_where_col_nums = max(where_nums)
-        batches = [torch.zeros(where_num, n_cond_ops).scatter(1, torch.LongTensor(batch_col).unsqueeze(1), 1) for where_num, batch_col in zip(where_nums, where_op_idxes)]  
+        batches = [
+            torch.zeros(where_num, n_cond_ops).scatter(1, torch.LongTensor(batch_col).unsqueeze(1), 1).to(device) 
+            for where_num, batch_col in zip(where_nums, where_op_idxes)
+        ]  
         # batches = [(where_col_nums, n_cond_ops), ...]  len = B
         batches_padded = []
         for b in batches:
             where_col_nums = b.size(0)
             if where_col_nums < max_where_col_nums:
-                b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), n_cond_ops)], dim=0)
+                b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), n_cond_ops, device=device)], dim=0)
             else:
                 b_padded = b
             batches_padded.append(b_padded)  # (max_where_col_nums, hidden_size)
+            
         return torch.stack(batches_padded) # (B, max_where_col_nums, hidden_size)

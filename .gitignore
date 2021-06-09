@@ -131,4 +131,8 @@ dmypy.json
 Notebooks/private/*
 Notebooks/docs_cache/*
 Notebooks/data/*
+Notebooks/ckpt/*
 .DS_Store
+logs/*
+ckpt/*
+.vscode
