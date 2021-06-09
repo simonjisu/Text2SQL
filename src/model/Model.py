@@ -603,7 +603,7 @@ class Text2SQL(pl.LightningModule):
             batch_size=batch_size,
             dataset=dataset,
             shuffle=shuffle,
-            num_workers=self.hparams.num_workers,
+            num_workers=num_workers,
             collate_fn=self._collate_fn # now dictionary values are not merged!
         )
         return data_loader
