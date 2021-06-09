@@ -555,12 +555,12 @@ class Text2SQL(pl.LightningModule):
         loss = loss / len(outputs)
 
         acc_sc, acc_sa, acc_wn, acc_wo, pp_wv = self.compute_all_metrics(len(outputs))
-        self.log("val_loss", loss, prog_bar=False, logger=True)
-        self.log("val_acc_sc", acc_sc, prog_bar=False, logger=True)
-        self.log("val_acc_sa", acc_sa, prog_bar=False, logger=True)
-        self.log("val_acc_wn", acc_wn, prog_bar=False, logger=True)
-        self.log("val_acc_wo", acc_wo, prog_bar=False, logger=True)
-        self.log("val_pp_wv", pp_wv, prog_bar=False, logger=True)
+        self.log("val_loss", loss, prog_bar=True, logger=True)
+        self.log("val_acc_sc", acc_sc, prog_bar=True, logger=True)
+        self.log("val_acc_sa", acc_sa, prog_bar=True, logger=True)
+        self.log("val_acc_wn", acc_wn, prog_bar=True, logger=True)
+        self.log("val_acc_wo", acc_wo, prog_bar=True, logger=True)
+        self.log("val_pp_wv", pp_wv, prog_bar=True, logger=True)
         self.reset_metrics_epoch_end()
 
     def load_data(self, sql_path: Union[Path, str], table_path: Union[Path, str]) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:

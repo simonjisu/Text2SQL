@@ -30,6 +30,10 @@ python main.py --help
 sh run_train.sh
 ```
 
+```
+tensorboard --logdir ./logs/ --bind_all --port 6006
+```
+
 # TODO
 
 - [x] 06.10 - Train Model

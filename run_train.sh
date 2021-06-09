@@ -1,1 +1,1 @@
-nohup python -u main.py --num_gpus 2 --num_train 10 --train_batch_size 32 --eval_batch_size 32 > train.log &
+nohup python -u main.py --num_train 10 --train_batch_size 32 --eval_batch_size 32 > train.log &
