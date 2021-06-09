@@ -68,7 +68,11 @@ def argument_parsing(preparse=False):
     # Records 
     parser.add_argument("-tsk", "--task", type=str, default="TEXT2SQL_v1",
                    help="Record Task")
-    
+    parser.add_argument("-logevery", "--log_every_n_steps", type=int, default=25,
+                   help="Log every n steps")
+    # GPU Setting
+    parser.add_argument("-ngpus", "--num_gpus", type=int, default=-1,
+                   help="Number of gpus")
     if preparse:
         return parser
     

@@ -54,7 +54,7 @@ def train(args):
         save_top_k=3,
         mode="min",
     )
-    tb_logger = pl.loggers.TensorBoardLogger(Path(args.log_dir), name=args.task)
+    tb_logger = pl.loggers.TensorBoardLogger(Path(args.log_dir), name=args.task, default_hp_metric=False)
     # mlf_logger = pl.loggers.MLFlowLogger(tracking_uri=f"file:{args.log_dir}", experiment_name=args.task+"_mlf")
     earlystop_callback = pl.callbacks.EarlyStopping("val_loss", mode="min")
     pl.seed_everything(args.seed)
@@ -63,9 +63,10 @@ def train(args):
         callbacks=[checkpoint_callback, earlystop_callback],
         max_epochs=args.num_train,
         deterministic=torch.cuda.is_available(),
-        gpus=2 if torch.cuda.is_available() else None,
+        gpus=args.num_gpus if torch.cuda.is_available() else None,
         num_sanity_val_steps=0,
         accelerator="ddp",
-        logger=tb_logger#[tb_logger, mlf_logger]
+        logger=tb_logger,#[tb_logger, mlf_logger]
+        log_every_n_steps=args.log_every_n_steps
     )
     trainer.fit(model)
