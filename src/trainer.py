@@ -63,8 +63,9 @@ def train(args):
         callbacks=[checkpoint_callback, earlystop_callback],
         max_epochs=args.num_train,
         deterministic=torch.cuda.is_available(),
-        gpus=-1 if torch.cuda.is_available() else None,
+        gpus=2 if torch.cuda.is_available() else None,
         num_sanity_val_steps=0,
+        accelerator="ddp",
         logger=tb_logger#[tb_logger, mlf_logger]
     )
     trainer.fit(model)
