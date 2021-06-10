@@ -45,6 +45,7 @@ class Text2SQL(pl.LightningModule):
         # Loss function & Metrics
         self.vocab_size = len(self.tokenizer_bert)
         self.totensor = lambda x: torch.LongTensor(x).to(self.device)
+        self.table = None
         self.create_metrics()
 
     def get_bert(self, model_path: str, output_hidden_states: bool=False):
@@ -460,7 +461,7 @@ class Text2SQL(pl.LightningModule):
 
         return list(zip(*res))
     
-    def get_batch_data(self, data: List[Dict[str, Any]], table: Dict[str, Dict[str, List[Any]]], start_tkn="[S]", end_tkn="[E]") -> Tuple[List[str], List[str], List[Dict[str, Any]]]:
+    def get_batch_data(self, data: List[Dict[str, Any]], table: Dict[str, Dict[str, List[Any]]], start_tkn="[S]", end_tkn="[E]", only_question=False) -> Tuple[List[str], List[str], List[Dict[str, Any]]]:
         """[summary]
 
         Args:
@@ -473,8 +474,8 @@ class Text2SQL(pl.LightningModule):
             Tuple[List[str], List[str], List[Dict[str, Any]]]: [description]
         """    
         batch_qs = [jsonl["question"] for jsonl in data]
+        
         tid = [jsonl["table_id"] for jsonl in data]
-        batch_sqls = [jsonl["sql"] for jsonl in data]
         batch_ts = []
         for table_id in tid:
             table_str = f"{table_id}" + "".join([
@@ -485,7 +486,10 @@ class Text2SQL(pl.LightningModule):
             #     f"{col_tkn}{start_tkn}{col}{end_tkn}" for col in dbengine.schema
             # ]) 
             batch_ts.append(table_str)
-
+        if only_question:
+            return batch_qs, batch_ts
+        
+        batch_sqls = [jsonl["sql"] for jsonl in data]
         return batch_qs, batch_ts, batch_sqls
     
     def compute_all_metrics(self, batch_size):
@@ -576,20 +580,27 @@ class Text2SQL(pl.LightningModule):
         path_sql = Path(sql_path)
         path_table = Path(table_path)
 
+        dataset = self.load_sqls(path_sql)
+        table = self.load_tables(path_table)
+
+        return dataset, table
+    
+    def load_sqls(self, path_sql):
         dataset = []
-        table = {}
         with path_sql.open("r", encoding="utf-8") as f:
             for idx, line in enumerate(f):
                 x = json.loads(line.strip())
                 dataset.append(x)
-
+        return dataset
+    
+    def load_tables(self, path_table):
+        table = {}
         with path_table.open("r", encoding="utf-8") as f:
             for idx, line in enumerate(f):
                 x = json.loads(line.strip())
                 table[x['id']] = x
-
-        return dataset, table
-
+        return table
+    
     def create_dataloader(self, mode):
         num_workers = 0 if os.name == "nt" else self.hparams.num_workers
         if mode == "train":
@@ -649,7 +660,7 @@ class Text2SQL(pl.LightningModule):
         
         return predicts
 
-    def predict_outputs(self, batch):
-        batch_qs, batch_ts, batch_sqls = self.get_batch_data(batch, self.table, self.hparams.special_start_tkn, self.hparams.special_end_tkn)
+    def predict_outputs(self, data, table):
+        batch_qs, batch_ts = self.get_batch_data(data, table, only_question=True)
         outputs = self.forward_outputs(batch_qs, batch_ts, batch_sqls=None, value_tkn_max_len=self.hparams.value_tkn_max_len, train=False)
         return self.predict_to_dict(outputs)

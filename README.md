@@ -18,6 +18,12 @@ Gathering information for **Semantic Parsing** problem, especially for `Text to 
 sh install_requirements.sh
 ```
 
+Download weight
+
+```
+sh get_weights.sh
+```
+
 ## Help
 
 ```
