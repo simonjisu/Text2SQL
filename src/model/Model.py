@@ -405,6 +405,7 @@ class Text2SQL(pl.LightningModule):
             if len(batch_wo) == 0 and where_num != 0:
                 # if predict nothing where clause and answer is not, what loss should be added?
                 loss_wv += loss_wn * 100
+                self.pp_wv(1e99)
             else:
                 for wv, g_wv_i in zip(batch_wv, batch_g_wv):  # will iter by where_num
                     give_wv_penalty = False

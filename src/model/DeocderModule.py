@@ -46,19 +46,22 @@ class Decoder(nn.Module):
         decoder_outputs = {}
 
         select_outputs, _ = self.select_decoder(question_padded, header_padded, col_padded, question_lengths, col_lengths)
-        select_idxes = g_sc if g_sc else self.predict_decoder("sc", select_outputs=select_outputs)
+        # select_idxes = g_sc if g_sc else self.predict_decoder("sc", select_outputs=select_outputs)
+        select_idxes = self.predict_decoder("sc", select_outputs=select_outputs)
 
         agg_outputs, _ = self.agg_decoder(question_padded, header_padded, col_padded, question_lengths, col_lengths, select_idxes)
 
         where_num_outputs, _  = self.where_num_decoder(question_padded, header_padded, col_padded, question_lengths, col_lengths)
-        where_nums = g_wn if g_wn else self.predict_decoder("wn", where_num_outputs=where_num_outputs)
+        # where_nums = g_wn if g_wn else self.predict_decoder("wn", where_num_outputs=where_num_outputs)
+        where_nums = self.predict_decoder("wn", where_num_outputs=where_num_outputs)
 
         where_col_outputs, _ = self.where_col_decoder(question_padded, header_padded, col_padded, question_lengths, col_lengths)
-        where_col_idxes = g_wc if g_wc else self.predict_decoder("wc", where_col_outputs=where_col_outputs, where_nums=where_nums)
+        # where_col_idxes = g_wc if g_wc else self.predict_decoder("wc", where_col_outputs=where_col_outputs, where_nums=where_nums)
+        where_col_idxes = self.predict_decoder("wc", where_col_outputs=where_col_outputs, where_nums=where_nums)
 
         where_op_outputs = self.where_op_decoder(question_padded, header_padded, col_padded, question_lengths, where_nums, where_col_idxes)
-        where_op_idxes = g_wo if g_wo else self.predict_decoder("wo", where_op_outputs=where_op_outputs, where_nums=where_nums)
-
+        # where_op_idxes = g_wo if g_wo else self.predict_decoder("wo", where_op_outputs=where_op_outputs, where_nums=where_nums)
+        where_op_idxes = self.predict_decoder("wo", where_op_outputs=where_op_outputs, where_nums=where_nums)
         where_value_outputs = self.where_value_decoder(question_padded, header_padded, col_padded, question_lengths, where_nums, where_col_idxes, where_op_idxes, value_tkn_max_len, g_wv_tkns)
         
         decoder_outputs = {

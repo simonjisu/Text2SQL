@@ -51,9 +51,9 @@ def argument_parsing(preparse=False):
     parser.add_argument("-pwn", "--wn_penalty", type=float, default=2.0,
                    help="Penalty for where number")
     parser.add_argument("-pwo", "--wo_penalty", type=float, default=4.0,
-                   help="Penalty for where number")
+                   help="Penalty for where operator")
     parser.add_argument("-pwv", "--wv_penalty", type=float, default=5.0,
-                   help="Penalty for where number")               
+                   help="Penalty for where value")               
     # Optimizer
     parser.add_argument("-nt", "--num_train", type=int, default=10,
                    help="Number of training epochs")
