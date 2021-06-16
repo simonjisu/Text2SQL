@@ -41,6 +41,8 @@ def argument_parsing(preparse=False):
     parser.add_argument("-dvtml", "--value_tkn_max_len", type=int, default=20,
                    help="Decoder maximum tokens that where clause value can be generated")
     # Tokenizer
+    parser.add_argument("-tmxln", "--max_length", type=int, default=256,
+                   help="Tokenizer max length")
     parser.add_argument("-tstkn", "--special_start_tkn", type=str, default="[S]",
                    help="Tokenizer for start special token")
     parser.add_argument("-tetkn", "--special_end_tkn", type=str, default="[E]",

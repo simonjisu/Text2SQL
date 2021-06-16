@@ -248,7 +248,7 @@ class WhereOpDecoder(nn.Module):
         for b in batches:
             where_col_nums = b.size(0)
             if where_col_nums < max_where_col_nums:
-                b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), hidden_size, device=device)], dim=0)
+                b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), hidden_size, device=device).contiguous()], dim=0)
             else:
                 b_padded = b
             batches_padded.append(b_padded)  # (max_where_col_nums, hidden_size)
@@ -329,9 +329,9 @@ class WhereValueDecoder(nn.Module):
             if g_max_len_where_num < self.max_where_conds:
                 for b in range(batch_size):
                     g_wv_tkns[b].extend([[self.end_tkn_id]]*(self.max_where_conds-g_max_len_where_num))
+
         for i in range(self.max_where_conds):
-            
-            g_wv_tkns_i = torch.LongTensor([g_wv_tkns[b_idx][i] for b_idx in range(batch_size)]).to(device) if g_wv_tkns is not None else None  # (B, T_d_i)
+            g_wv_tkns_i = torch.LongTensor([g_wv_tkns[b_idx][i] for b_idx in range(batch_size)]).to(device).contiguous() if g_wv_tkns is not None else None  # (B, T_d_i)
             vec_i = vec[:, i, :]  # (B, 3H)
             
             h_0 = self.output_lstm_hidden_init_linear(vec_i).unsqueeze(1).transpose(0, 1).contiguous()  # (B, 3H) -> (B, bert_H) -> (1, B, bert_H)
@@ -344,7 +344,7 @@ class WhereValueDecoder(nn.Module):
         return total_scores
     
     def start_token(self, batch_size, device):
-        sos = torch.LongTensor([self.start_tkn_id]*batch_size).unsqueeze(1).to(device)  # (B, 1)
+        sos = torch.LongTensor([self.start_tkn_id]*batch_size).unsqueeze(1).to(device).contiguous()  # (B, 1)
         return sos
     
     def decode_single_where_col(self, batch_size, h_0, c_0, value_tkn_max_len=None, g_wv_tkns_i=None, device: str="cpu"):
@@ -411,7 +411,7 @@ class WhereValueDecoder(nn.Module):
         """
         max_where_col_nums = self.max_where_conds # max(where_nums)
         batches = [
-            torch.zeros(where_num, n_cond_ops).scatter(1, torch.LongTensor(batch_col).unsqueeze(1), 1).to(device) 
+            torch.zeros(where_num, n_cond_ops).scatter(1, torch.LongTensor(batch_col).unsqueeze(1), 1).to(device).contiguous() 
             for where_num, batch_col in zip(where_nums, where_op_idxes)
         ]  
         # batches = [(where_col_nums, n_cond_ops), ...]  len = B
@@ -419,7 +419,7 @@ class WhereValueDecoder(nn.Module):
         for b in batches:
             where_col_nums = b.size(0)
             if where_col_nums < max_where_col_nums:
-                b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), n_cond_ops, device=device)], dim=0)
+                b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), n_cond_ops, device=device).contiguous()], dim=0)
             else:
                 b_padded = b
             batches_padded.append(b_padded)  # (max_where_col_nums, hidden_size)

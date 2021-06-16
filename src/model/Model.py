@@ -99,7 +99,7 @@ class Text2SQL(pl.LightningModule):
         # --- Get Inputs for Encoder --- 
         encode_inputs = self.tokenizer_bert(
             batch_qs, batch_ts, 
-            max_length=512, padding=True, truncation=True, return_tensors="pt", 
+            max_length=self.hparams.max_length, padding=True, truncation=True, return_tensors="pt", 
             return_attention_mask=True, 
             return_special_tokens_mask=False, 
         ).to(self.device)  # encode_input doesn't return the cuda device
@@ -110,7 +110,7 @@ class Text2SQL(pl.LightningModule):
         # --- Get Inputs for Decoder ---
         input_question_mask, input_table_mask, input_header_mask, input_col_mask = self.get_input_mask_and_answer(encode_inputs, self.tokenizer_bert)
         question_padded, question_lengths = self.get_decoder_batches(encode_outputs, input_question_mask, pad_idx=self.tokenizer_bert.pad_token_id)
-        input_table_header_mask = torch.bitwise_or(input_table_mask, input_header_mask)
+        input_table_header_mask = torch.bitwise_or(input_table_mask, input_header_mask).contiguous()
         header_padded, header_lengths = self.get_decoder_batches(encode_outputs, input_table_header_mask, pad_idx=self.tokenizer_bert.pad_token_id)
         col_padded, col_lengths = self.get_decoder_batches(encode_outputs, input_col_mask, pad_idx=self.tokenizer_bert.pad_token_id)
         
@@ -144,16 +144,16 @@ class Text2SQL(pl.LightningModule):
         sep_tkn_mask = encode_input["input_ids"] == tokenizer.sep_token_id
         start_tkn_id, end_tkn_id, col_tkn_id = tokenizer.additional_special_tokens_ids
 
-        input_question_mask = torch.bitwise_and(encode_input["token_type_ids"] == 0, encode_input["attention_mask"].bool())
-        input_question_mask = torch.bitwise_and(input_question_mask, ~sep_tkn_mask) # [SEP] mask out
+        input_question_mask = torch.bitwise_and(encode_input["token_type_ids"] == 0, encode_input["attention_mask"].bool()).contiguous()
+        input_question_mask = torch.bitwise_and(input_question_mask, ~sep_tkn_mask).contiguous() # [SEP] mask out
         input_question_mask[:, 0] = False  # [CLS] mask out
 
-        db_mask = torch.bitwise_and(encode_input["token_type_ids"] == 1, encode_input["attention_mask"].bool())
-        db_mask = torch.bitwise_xor(db_mask, sep_tkn_mask)
+        db_mask = torch.bitwise_and(encode_input["token_type_ids"] == 1, encode_input["attention_mask"].bool()).contiguous()
+        db_mask = torch.bitwise_xor(db_mask, sep_tkn_mask).contiguous()
         col_tkn_mask = encode_input["input_ids"] == col_tkn_id
-        db_mask = torch.bitwise_and(db_mask, ~col_tkn_mask)
+        db_mask = torch.bitwise_and(db_mask, ~col_tkn_mask).contiguous()
         # split table_mask and header_mask
-        input_idx = torch.arange(max_length).repeat(batch_size, 1).to(self.device)
+        input_idx = torch.arange(max_length).repeat(batch_size, 1).to(self.device).contiguous()
         db_idx = input_idx[db_mask]
         table_header_tkn_idx = db_idx[db_idx > 0]
         table_start_idx = table_header_tkn_idx.view(batch_size, -1)[:, 0] + 1
@@ -173,8 +173,8 @@ class Text2SQL(pl.LightningModule):
 
         # TODO: [EXP] Experiment for generate column directly
         # If [EXP], `table_tkn_mask` and `header_tkn_mask` should include [S] & [E] tokens
-        table_tkn_mask = torch.zeros_like(encode_input["input_ids"], dtype=torch.bool, device=self.device).scatter(1, table_tkn_idx, True)
-        header_tkn_mask = torch.zeros_like(encode_input["input_ids"], dtype=torch.bool, device=self.device).scatter(1, header_tkn_idx, True)
+        table_tkn_mask = torch.zeros_like(encode_input["input_ids"], dtype=torch.bool, device=self.device).scatter(1, table_tkn_idx, True).contiguous()
+        header_tkn_mask = torch.zeros_like(encode_input["input_ids"], dtype=torch.bool, device=self.device).scatter(1, header_tkn_idx, True).contiguous()
 
         # TODO: [EXP] Experiment for generate column directly
         # For Decoder Input, Maskout [S], [E] for table & header -> will be done automatically
@@ -187,7 +187,7 @@ class Text2SQL(pl.LightningModule):
 
         # [COL] token mask: this is for attention
         col_tkn_idx = input_idx[col_tkn_mask].view(batch_size, -1)
-        input_col_mask = torch.zeros_like(encode_input["input_ids"], device=self.device, dtype=torch.bool).scatter(1, col_tkn_idx, True)
+        input_col_mask = torch.zeros_like(encode_input["input_ids"], device=self.device, dtype=torch.bool).scatter(1, col_tkn_idx, True).contiguous()
 
         # TODO: [EXP] Experiment for generate column directly
         # For Answer, Maskout [S] for table & header 
@@ -233,7 +233,7 @@ class Text2SQL(pl.LightningModule):
         start_tkn_mask = input_ids == start_tkn_id
         end_tkn_mask = input_ids == end_tkn_id
         start_end_mask = torch.bitwise_or(start_tkn_mask, end_tkn_mask)
-        index = torch.arange(input_ids.size(1)).repeat(batch_size)[start_end_mask.view(-1)].view(batch_size, -1)
+        index = torch.arange(input_ids.size(1)).repeat(batch_size)[start_end_mask.view(-1)].view(batch_size, -1).contiguous()
         return mask.scatter(1, index, False)
     
     def get_decoder_batches(self, encode_output: transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions, mask: torch.BoolTensor, pad_idx: int) -> Tuple[torch.Tensor, List[int]]:
@@ -324,7 +324,7 @@ class Text2SQL(pl.LightningModule):
         # get where value tokenized 
         pad_tkn_id = self.tokenizer_bert.pad_token_id
         g_wv_tkns = [[f"{s}{self.hparams.special_end_tkn}" for s in batch_wv] for batch_wv in g_wv]
-        g_wv_tkns = [tokenizer(batch_wv, add_special_tokens=False)["input_ids"] if len(batch_wv) > 0 else batch_wv for batch_wv in g_wv_tkns]
+        g_wv_tkns = [self.tokenizer_bert(batch_wv, add_special_tokens=False)["input_ids"] if len(batch_wv) > 0 else batch_wv for batch_wv in g_wv_tkns]
         # add empty list if batch has different where column number
         max_where_cols = max([len(batch_wv) for batch_wv in g_wv_tkns])
         g_wv_tkns = [batch_wv + [[]]*(max_where_cols-len(batch_wv)) if len(batch_wv) < max_where_cols else batch_wv for batch_wv in g_wv_tkns]
@@ -374,12 +374,12 @@ class Text2SQL(pl.LightningModule):
 
             batch_g_wo = g_wo[batch_idx]  # (where_num,)
             batch_wo = decoder_outputs["wo"][batch_idx, :where_num, :]  # (where_num, n_cond_ops)
-            loss_wo += self.cross_entropy(batch_wo, totensor(batch_g_wo))
+            loss_wo += self.cross_entropy(batch_wo, self.totensor(batch_g_wo))
             
             batch_g_wv = g_wv_tkns[batch_idx][:where_num]  # (where_num, T_d_i)
             batch_wv = [wv[batch_idx] for wv in decoder_outputs["wv"]]  # (where_num, T_d_i, vocab_size)
             for wv, g_wv_i in zip(batch_wv, batch_g_wv):
-                loss_wv += cross_entropy(wv, totensor(g_wv_i))
+                loss_wv += self.cross_entropy(wv, self.totensor(g_wv_i))
         self.pp_wv.update(torch.exp(loss_wv) / batch_size)     
         loss = (loss_sc + loss_sa + loss_wn + loss_wc + loss_wo + loss_wv) / batch_size
         return loss
@@ -540,7 +540,7 @@ class Text2SQL(pl.LightningModule):
     def load_sqls(self, path_sql):
         dataset = []
         with path_sql.open("r", encoding="utf-8") as f:
-            for idx, line in enumerate(f):
+            for line in f:
                 x = json.loads(line.strip())
                 dataset.append(x)
         return dataset
@@ -548,7 +548,7 @@ class Text2SQL(pl.LightningModule):
     def load_tables(self, path_table):
         table = {}
         with path_table.open("r", encoding="utf-8") as f:
-            for idx, line in enumerate(f):
+            for line in f:
                 x = json.loads(line.strip())
                 table[x['id']] = x
         return table
