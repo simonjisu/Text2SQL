@@ -37,11 +37,10 @@ class DBEngine:
         self.col2idx = col2idx
     
     def to_jsonl_table(self, table_id: str) -> dict:
-        if self.table_id is None:
-            self._reset()
-            self.get_schema_info(table_id)
+        self._reset()
+        self.get_schema_info(table_id)
         table = {"id": self.table_id, "header": list(self.schema), "types": list(self.schema.values()), "rows": []}
-        q = f"SELECT * FROM {self.table_id}"
+        q = f'SELECT * FROM "{self.table_id}"'
         res = self.db.query(q)
         for row in res.all():
             table["rows"].append(list(row.values()))

@@ -60,651 +60,651 @@
 019170의 제 35 기의 보고서 번호가 어떻게 돼?	SELECT rcept_no FROM "019170" WHERE thstrm_nm = "제 35 기"
 유동자산은 어느 재무보고서에 속하니?	SELECT sj_nm FROM "019170" WHERE account_nm = "유동자산"
 유동자산은 어떤 재무제표야?	SELECT sj_nm FROM "019170" WHERE account_nm = "유동자산"
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2018
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동자산"
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2018
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동자산"
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2019
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동자산"
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2019
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동자산"
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2020
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동자산"
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2020
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동자산"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동자산"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동자산"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동자산"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동자산"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동자산"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동자산"
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2018
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동자산"
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2018
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동자산"
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2019
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동자산"
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2019
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동자산"
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2020
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동자산"
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2020
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동자산"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동자산"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동자산"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동자산"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동자산"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동자산"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동자산"
+019170의 2018연도의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2018
+019170의 2018연도의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동자산"
+2018년 019170의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2018
+2018년 019170의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동자산"
+019170의 2019연도의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2019
+019170의 2019연도의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동자산"
+2019년 019170의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2019
+2019년 019170의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동자산"
+019170의 2020연도의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2020
+019170의 2020연도의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동자산"
+2020년 019170의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2020
+2020년 019170의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동자산"
+019170의 제 33 기 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동자산"
+제 33 기 019170의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동자산"
+019170의 제 34 기 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동자산"
+제 34 기 019170의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동자산"
+019170의 제 35 기 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동자산"
+제 35 기 019170의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동자산"
+019170의 2018연도의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2018
+019170의 2018연도의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동자산"
+2018년 019170의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2018
+2018년 019170의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동자산"
+019170의 2019연도의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2019
+019170의 2019연도의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동자산"
+2019년 019170의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2019
+2019년 019170의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동자산"
+019170의 2020연도의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2020
+019170의 2020연도의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동자산"
+2020년 019170의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND bsns_year = 2020
+2020년 019170의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동자산"
+019170의 제 33 기 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동자산"
+제 33 기 019170의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동자산"
+019170의 제 34 기 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동자산"
+제 34 기 019170의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동자산"
+019170의 제 35 기 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동자산"
+제 35 기 019170의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동자산" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동자산"
 비유동자산은 어느 재무보고서에 속하니?	SELECT sj_nm FROM "019170" WHERE account_nm = "비유동자산"
 비유동자산은 어떤 재무제표야?	SELECT sj_nm FROM "019170" WHERE account_nm = "비유동자산"
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2018
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동자산"
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2018
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동자산"
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2019
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동자산"
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2019
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동자산"
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2020
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동자산"
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2020
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동자산"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동자산"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동자산"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동자산"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동자산"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동자산"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동자산"
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2018
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동자산"
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2018
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동자산"
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2019
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동자산"
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2019
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동자산"
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2020
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동자산"
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2020
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동자산"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동자산"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동자산"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동자산"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동자산"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동자산"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동자산"
+019170의 2018연도의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2018
+019170의 2018연도의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동자산"
+2018년 019170의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2018
+2018년 019170의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동자산"
+019170의 2019연도의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2019
+019170의 2019연도의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동자산"
+2019년 019170의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2019
+2019년 019170의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동자산"
+019170의 2020연도의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2020
+019170의 2020연도의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동자산"
+2020년 019170의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2020
+2020년 019170의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동자산"
+019170의 제 33 기 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동자산"
+제 33 기 019170의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동자산"
+019170의 제 34 기 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동자산"
+제 34 기 019170의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동자산"
+019170의 제 35 기 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동자산"
+제 35 기 019170의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 비유동자산은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동자산"
+019170의 2018연도의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2018
+019170의 2018연도의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동자산"
+2018년 019170의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2018
+2018년 019170의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동자산"
+019170의 2019연도의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2019
+019170의 2019연도의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동자산"
+2019년 019170의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2019
+2019년 019170의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동자산"
+019170의 2020연도의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2020
+019170의 2020연도의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동자산"
+2020년 019170의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND bsns_year = 2020
+2020년 019170의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동자산"
+019170의 제 33 기 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동자산"
+제 33 기 019170의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동자산"
+019170의 제 34 기 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동자산"
+제 34 기 019170의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동자산"
+019170의 제 35 기 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동자산"
+제 35 기 019170의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동자산" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 비유동자산은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동자산"
 자산총계는 어느 재무보고서에 속하니?	SELECT sj_nm FROM "019170" WHERE account_nm = "자산총계"
 자산총계는 어떤 재무제표야?	SELECT sj_nm FROM "019170" WHERE account_nm = "자산총계"
-019170 2018연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2018
-019170 2018연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자산총계"
-2018년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2018
-2018년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자산총계"
-019170 2019연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2019
-019170 2019연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자산총계"
-2019년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2019
-2019년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자산총계"
-019170 2020연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2020
-019170 2020연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자산총계"
-2020년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2020
-2020년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자산총계"
-019170 제 33 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자산총계"
-제 33 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자산총계"
-019170 제 34 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자산총계"
-제 34 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자산총계"
-019170 제 35 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자산총계"
-제 35 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자산총계"
-019170 2018연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2018
-019170 2018연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자산총계"
-2018년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2018
-2018년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자산총계"
-019170 2019연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2019
-019170 2019연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자산총계"
-2019년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2019
-2019년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자산총계"
-019170 2020연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2020
-019170 2020연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자산총계"
-2020년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2020
-2020년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자산총계"
-019170 제 33 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자산총계"
-제 33 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자산총계"
-019170 제 34 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자산총계"
-제 34 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자산총계"
-019170 제 35 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자산총계"
-제 35 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자산총계"
+019170의 2018연도의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2018
+019170의 2018연도의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자산총계"
+2018년 019170의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2018
+2018년 019170의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자산총계"
+019170의 2019연도의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2019
+019170의 2019연도의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자산총계"
+2019년 019170의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2019
+2019년 019170의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자산총계"
+019170의 2020연도의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2020
+019170의 2020연도의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자산총계"
+2020년 019170의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2020
+2020년 019170의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자산총계"
+019170의 제 33 기 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자산총계"
+제 33 기 019170의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자산총계"
+019170의 제 34 기 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자산총계"
+제 34 기 019170의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자산총계"
+019170의 제 35 기 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자산총계"
+제 35 기 019170의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 자산총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자산총계"
+019170의 2018연도의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2018
+019170의 2018연도의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자산총계"
+2018년 019170의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2018
+2018년 019170의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자산총계"
+019170의 2019연도의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2019
+019170의 2019연도의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자산총계"
+2019년 019170의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2019
+2019년 019170의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자산총계"
+019170의 2020연도의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2020
+019170의 2020연도의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자산총계"
+2020년 019170의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND bsns_year = 2020
+2020년 019170의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자산총계"
+019170의 제 33 기 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자산총계"
+제 33 기 019170의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자산총계"
+019170의 제 34 기 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자산총계"
+제 34 기 019170의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자산총계"
+019170의 제 35 기 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자산총계"
+제 35 기 019170의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자산총계" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 자산총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자산총계"
 유동부채는 어느 재무보고서에 속하니?	SELECT sj_nm FROM "019170" WHERE account_nm = "유동부채"
 유동부채는 어떤 재무제표야?	SELECT sj_nm FROM "019170" WHERE account_nm = "유동부채"
-019170 2018연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2018
-019170 2018연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동부채"
-2018년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2018
-2018년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동부채"
-019170 2019연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2019
-019170 2019연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동부채"
-2019년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2019
-2019년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동부채"
-019170 2020연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2020
-019170 2020연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동부채"
-2020년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2020
-2020년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동부채"
-019170 제 33 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동부채"
-제 33 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동부채"
-019170 제 34 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동부채"
-제 34 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동부채"
-019170 제 35 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동부채"
-제 35 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동부채"
-019170 2018연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2018
-019170 2018연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동부채"
-2018년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2018
-2018년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동부채"
-019170 2019연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2019
-019170 2019연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동부채"
-2019년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2019
-2019년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동부채"
-019170 2020연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2020
-019170 2020연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동부채"
-2020년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2020
-2020년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동부채"
-019170 제 33 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동부채"
-제 33 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동부채"
-019170 제 34 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동부채"
-제 34 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동부채"
-019170 제 35 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동부채"
-제 35 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동부채"
+019170의 2018연도의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2018
+019170의 2018연도의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동부채"
+2018년 019170의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2018
+2018년 019170의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동부채"
+019170의 2019연도의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2019
+019170의 2019연도의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동부채"
+2019년 019170의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2019
+2019년 019170의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동부채"
+019170의 2020연도의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2020
+019170의 2020연도의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동부채"
+2020년 019170의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2020
+2020년 019170의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동부채"
+019170의 제 33 기 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동부채"
+제 33 기 019170의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동부채"
+019170의 제 34 기 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동부채"
+제 34 기 019170의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동부채"
+019170의 제 35 기 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동부채"
+제 35 기 019170의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동부채"
+019170의 2018연도의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2018
+019170의 2018연도의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동부채"
+2018년 019170의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2018
+2018년 019170의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "유동부채"
+019170의 2019연도의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2019
+019170의 2019연도의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동부채"
+2019년 019170의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2019
+2019년 019170의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "유동부채"
+019170의 2020연도의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2020
+019170의 2020연도의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동부채"
+2020년 019170의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND bsns_year = 2020
+2020년 019170의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "유동부채"
+019170의 제 33 기 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동부채"
+제 33 기 019170의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "유동부채"
+019170의 제 34 기 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동부채"
+제 34 기 019170의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "유동부채"
+019170의 제 35 기 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동부채"
+제 35 기 019170의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "유동부채" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "유동부채"
 비유동부채는 어느 재무보고서에 속하니?	SELECT sj_nm FROM "019170" WHERE account_nm = "비유동부채"
 비유동부채는 어떤 재무제표야?	SELECT sj_nm FROM "019170" WHERE account_nm = "비유동부채"
-019170 2018연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2018
-019170 2018연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동부채"
-2018년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2018
-2018년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동부채"
-019170 2019연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2019
-019170 2019연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동부채"
-2019년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2019
-2019년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동부채"
-019170 2020연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2020
-019170 2020연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동부채"
-2020년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2020
-2020년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동부채"
-019170 제 33 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동부채"
-제 33 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동부채"
-019170 제 34 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동부채"
-제 34 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동부채"
-019170 제 35 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동부채"
-제 35 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동부채"
-019170 2018연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2018
-019170 2018연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동부채"
-2018년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2018
-2018년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동부채"
-019170 2019연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2019
-019170 2019연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동부채"
-2019년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2019
-2019년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동부채"
-019170 2020연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2020
-019170 2020연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동부채"
-2020년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2020
-2020년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동부채"
-019170 제 33 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동부채"
-제 33 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동부채"
-019170 제 34 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동부채"
-제 34 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동부채"
-019170 제 35 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동부채"
-제 35 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동부채"
+019170의 2018연도의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2018
+019170의 2018연도의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동부채"
+2018년 019170의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2018
+2018년 019170의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동부채"
+019170의 2019연도의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2019
+019170의 2019연도의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동부채"
+2019년 019170의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2019
+2019년 019170의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동부채"
+019170의 2020연도의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2020
+019170의 2020연도의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동부채"
+2020년 019170의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2020
+2020년 019170의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동부채"
+019170의 제 33 기 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동부채"
+제 33 기 019170의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동부채"
+019170의 제 34 기 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동부채"
+제 34 기 019170의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동부채"
+019170의 제 35 기 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동부채"
+제 35 기 019170의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 비유동부채는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동부채"
+019170의 2018연도의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2018
+019170의 2018연도의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동부채"
+2018년 019170의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2018
+2018년 019170의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "비유동부채"
+019170의 2019연도의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2019
+019170의 2019연도의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동부채"
+2019년 019170의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2019
+2019년 019170의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "비유동부채"
+019170의 2020연도의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2020
+019170의 2020연도의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동부채"
+2020년 019170의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND bsns_year = 2020
+2020년 019170의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "비유동부채"
+019170의 제 33 기 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동부채"
+제 33 기 019170의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "비유동부채"
+019170의 제 34 기 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동부채"
+제 34 기 019170의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "비유동부채"
+019170의 제 35 기 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동부채"
+제 35 기 019170의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "비유동부채" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 비유동부채는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "비유동부채"
 부채총계는 어느 재무보고서에 속하니?	SELECT sj_nm FROM "019170" WHERE account_nm = "부채총계"
 부채총계는 어떤 재무제표야?	SELECT sj_nm FROM "019170" WHERE account_nm = "부채총계"
-019170 2018연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2018
-019170 2018연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "부채총계"
-2018년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2018
-2018년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "부채총계"
-019170 2019연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2019
-019170 2019연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "부채총계"
-2019년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2019
-2019년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "부채총계"
-019170 2020연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2020
-019170 2020연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "부채총계"
-2020년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2020
-2020년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "부채총계"
-019170 제 33 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "부채총계"
-제 33 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "부채총계"
-019170 제 34 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "부채총계"
-제 34 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "부채총계"
-019170 제 35 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "부채총계"
-제 35 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "부채총계"
-019170 2018연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2018
-019170 2018연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "부채총계"
-2018년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2018
-2018년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "부채총계"
-019170 2019연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2019
-019170 2019연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "부채총계"
-2019년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2019
-2019년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "부채총계"
-019170 2020연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2020
-019170 2020연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "부채총계"
-2020년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2020
-2020년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "부채총계"
-019170 제 33 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "부채총계"
-제 33 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "부채총계"
-019170 제 34 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "부채총계"
-제 34 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "부채총계"
-019170 제 35 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "부채총계"
-제 35 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "부채총계"
+019170의 2018연도의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2018
+019170의 2018연도의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "부채총계"
+2018년 019170의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2018
+2018년 019170의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "부채총계"
+019170의 2019연도의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2019
+019170의 2019연도의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "부채총계"
+2019년 019170의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2019
+2019년 019170의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "부채총계"
+019170의 2020연도의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2020
+019170의 2020연도의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "부채총계"
+2020년 019170의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2020
+2020년 019170의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "부채총계"
+019170의 제 33 기 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "부채총계"
+제 33 기 019170의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "부채총계"
+019170의 제 34 기 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "부채총계"
+제 34 기 019170의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "부채총계"
+019170의 제 35 기 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "부채총계"
+제 35 기 019170의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 부채총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "부채총계"
+019170의 2018연도의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2018
+019170의 2018연도의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "부채총계"
+2018년 019170의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2018
+2018년 019170의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "부채총계"
+019170의 2019연도의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2019
+019170의 2019연도의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "부채총계"
+2019년 019170의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2019
+2019년 019170의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "부채총계"
+019170의 2020연도의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2020
+019170의 2020연도의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "부채총계"
+2020년 019170의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND bsns_year = 2020
+2020년 019170의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "부채총계"
+019170의 제 33 기 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "부채총계"
+제 33 기 019170의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "부채총계"
+019170의 제 34 기 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "부채총계"
+제 34 기 019170의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "부채총계"
+019170의 제 35 기 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "부채총계"
+제 35 기 019170의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "부채총계" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 부채총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "부채총계"
 자본금은 어느 재무보고서에 속하니?	SELECT sj_nm FROM "019170" WHERE account_nm = "자본금"
 자본금은 어떤 재무제표야?	SELECT sj_nm FROM "019170" WHERE account_nm = "자본금"
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2018
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본금"
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2018
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본금"
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2019
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본금"
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2019
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본금"
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2020
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본금"
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2020
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본금"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본금"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본금"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본금"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본금"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본금"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본금"
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2018
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본금"
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2018
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본금"
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2019
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본금"
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2019
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본금"
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2020
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본금"
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2020
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본금"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본금"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본금"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본금"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본금"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본금"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본금"
+019170의 2018연도의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2018
+019170의 2018연도의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본금"
+2018년 019170의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2018
+2018년 019170의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본금"
+019170의 2019연도의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2019
+019170의 2019연도의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본금"
+2019년 019170의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2019
+2019년 019170의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본금"
+019170의 2020연도의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2020
+019170의 2020연도의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본금"
+2020년 019170의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2020
+2020년 019170의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본금"
+019170의 제 33 기 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본금"
+제 33 기 019170의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본금"
+019170의 제 34 기 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본금"
+제 34 기 019170의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본금"
+019170의 제 35 기 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본금"
+제 35 기 019170의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 자본금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본금"
+019170의 2018연도의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2018
+019170의 2018연도의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본금"
+2018년 019170의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2018
+2018년 019170의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본금"
+019170의 2019연도의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2019
+019170의 2019연도의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본금"
+2019년 019170의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2019
+2019년 019170의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본금"
+019170의 2020연도의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2020
+019170의 2020연도의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본금"
+2020년 019170의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND bsns_year = 2020
+2020년 019170의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본금"
+019170의 제 33 기 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본금"
+제 33 기 019170의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본금"
+019170의 제 34 기 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본금"
+제 34 기 019170의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본금"
+019170의 제 35 기 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본금"
+제 35 기 019170의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본금" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 자본금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본금"
 이익잉여금은 어느 재무보고서에 속하니?	SELECT sj_nm FROM "019170" WHERE account_nm = "이익잉여금"
 이익잉여금은 어떤 재무제표야?	SELECT sj_nm FROM "019170" WHERE account_nm = "이익잉여금"
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2018
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "이익잉여금"
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2018
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "이익잉여금"
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2019
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "이익잉여금"
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2019
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "이익잉여금"
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2020
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "이익잉여금"
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2020
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "이익잉여금"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "이익잉여금"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "이익잉여금"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "이익잉여금"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "이익잉여금"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "이익잉여금"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "이익잉여금"
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2018
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "이익잉여금"
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2018
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "이익잉여금"
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2019
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "이익잉여금"
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2019
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "이익잉여금"
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2020
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "이익잉여금"
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2020
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "이익잉여금"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "이익잉여금"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "이익잉여금"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "이익잉여금"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "이익잉여금"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "이익잉여금"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "이익잉여금"
+019170의 2018연도의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2018
+019170의 2018연도의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "이익잉여금"
+2018년 019170의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2018
+2018년 019170의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "이익잉여금"
+019170의 2019연도의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2019
+019170의 2019연도의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "이익잉여금"
+2019년 019170의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2019
+2019년 019170의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "이익잉여금"
+019170의 2020연도의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2020
+019170의 2020연도의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "이익잉여금"
+2020년 019170의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2020
+2020년 019170의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "이익잉여금"
+019170의 제 33 기 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "이익잉여금"
+제 33 기 019170의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "이익잉여금"
+019170의 제 34 기 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "이익잉여금"
+제 34 기 019170의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "이익잉여금"
+019170의 제 35 기 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "이익잉여금"
+제 35 기 019170의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 이익잉여금은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "이익잉여금"
+019170의 2018연도의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2018
+019170의 2018연도의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "이익잉여금"
+2018년 019170의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2018
+2018년 019170의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "이익잉여금"
+019170의 2019연도의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2019
+019170의 2019연도의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "이익잉여금"
+2019년 019170의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2019
+2019년 019170의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "이익잉여금"
+019170의 2020연도의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2020
+019170의 2020연도의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "이익잉여금"
+2020년 019170의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND bsns_year = 2020
+2020년 019170의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "이익잉여금"
+019170의 제 33 기 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "이익잉여금"
+제 33 기 019170의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "이익잉여금"
+019170의 제 34 기 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "이익잉여금"
+제 34 기 019170의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "이익잉여금"
+019170의 제 35 기 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "이익잉여금"
+제 35 기 019170의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "이익잉여금" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 이익잉여금은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "이익잉여금"
 자본총계는 어느 재무보고서에 속하니?	SELECT sj_nm FROM "019170" WHERE account_nm = "자본총계"
 자본총계는 어떤 재무제표야?	SELECT sj_nm FROM "019170" WHERE account_nm = "자본총계"
-019170 2018연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2018
-019170 2018연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본총계"
-2018년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2018
-2018년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본총계"
-019170 2019연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2019
-019170 2019연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본총계"
-2019년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2019
-2019년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본총계"
-019170 2020연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2020
-019170 2020연도의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본총계"
-2020년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2020
-2020년 019170의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본총계"
-019170 제 33 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본총계"
-제 33 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본총계"
-019170 제 34 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본총계"
-제 34 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본총계"
-019170 제 35 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본총계"
-제 35 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본총계"
-019170 2018연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2018
-019170 2018연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본총계"
-2018년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2018
-2018년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본총계"
-019170 2019연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2019
-019170 2019연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본총계"
-2019년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2019
-2019년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본총계"
-019170 2020연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2020
-019170 2020연도의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본총계"
-2020년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2020
-2020년 019170의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본총계"
-019170 제 33 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본총계"
-제 33 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본총계"
-019170 제 34 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본총계"
-제 34 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본총계"
-019170 제 35 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본총계"
-제 35 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본총계"
+019170의 2018연도의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2018
+019170의 2018연도의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본총계"
+2018년 019170의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2018
+2018년 019170의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본총계"
+019170의 2019연도의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2019
+019170의 2019연도의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본총계"
+2019년 019170의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2019
+2019년 019170의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본총계"
+019170의 2020연도의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2020
+019170의 2020연도의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본총계"
+2020년 019170의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2020
+2020년 019170의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본총계"
+019170의 제 33 기 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본총계"
+제 33 기 019170의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본총계"
+019170의 제 34 기 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본총계"
+제 34 기 019170의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본총계"
+019170의 제 35 기 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본총계"
+제 35 기 019170의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 자본총계는 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본총계"
+019170의 2018연도의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2018
+019170의 2018연도의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본총계"
+2018년 019170의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2018
+2018년 019170의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "자본총계"
+019170의 2019연도의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2019
+019170의 2019연도의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본총계"
+2019년 019170의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2019
+2019년 019170의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "자본총계"
+019170의 2020연도의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2020
+019170의 2020연도의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본총계"
+2020년 019170의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND bsns_year = 2020
+2020년 019170의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "자본총계"
+019170의 제 33 기 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본총계"
+제 33 기 019170의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "자본총계"
+019170의 제 34 기 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본총계"
+제 34 기 019170의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "자본총계"
+019170의 제 35 기 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본총계"
+제 35 기 019170의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "자본총계" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 자본총계는 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "자본총계"
 매출액은 어느 재무보고서에 속하니?	SELECT sj_nm FROM "019170" WHERE account_nm = "매출액"
 매출액은 어떤 재무제표야?	SELECT sj_nm FROM "019170" WHERE account_nm = "매출액"
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2018
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "매출액"
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2018
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "매출액"
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2019
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "매출액"
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2019
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "매출액"
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2020
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "매출액"
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2020
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "매출액"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "매출액"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "매출액"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "매출액"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "매출액"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "매출액"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "매출액"
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2018
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "매출액"
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2018
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "매출액"
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2019
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "매출액"
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2019
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "매출액"
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2020
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "매출액"
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2020
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "매출액"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "매출액"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "매출액"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "매출액"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "매출액"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "매출액"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "매출액"
+019170의 2018연도의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2018
+019170의 2018연도의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "매출액"
+2018년 019170의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2018
+2018년 019170의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "매출액"
+019170의 2019연도의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2019
+019170의 2019연도의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "매출액"
+2019년 019170의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2019
+2019년 019170의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "매출액"
+019170의 2020연도의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2020
+019170의 2020연도의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "매출액"
+2020년 019170의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2020
+2020년 019170의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "매출액"
+019170의 제 33 기 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "매출액"
+제 33 기 019170의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "매출액"
+019170의 제 34 기 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "매출액"
+제 34 기 019170의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "매출액"
+019170의 제 35 기 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "매출액"
+제 35 기 019170의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 매출액은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "매출액"
+019170의 2018연도의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2018
+019170의 2018연도의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "매출액"
+2018년 019170의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2018
+2018년 019170의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "매출액"
+019170의 2019연도의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2019
+019170의 2019연도의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "매출액"
+2019년 019170의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2019
+2019년 019170의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "매출액"
+019170의 2020연도의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2020
+019170의 2020연도의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "매출액"
+2020년 019170의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND bsns_year = 2020
+2020년 019170의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "매출액"
+019170의 제 33 기 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "매출액"
+제 33 기 019170의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "매출액"
+019170의 제 34 기 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "매출액"
+제 34 기 019170의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "매출액"
+019170의 제 35 기 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "매출액"
+제 35 기 019170의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "매출액" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 매출액은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "매출액"
 영업이익은 어느 재무보고서에 속하니?	SELECT sj_nm FROM "019170" WHERE account_nm = "영업이익"
 영업이익은 어떤 재무제표야?	SELECT sj_nm FROM "019170" WHERE account_nm = "영업이익"
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2018
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "영업이익"
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2018
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "영업이익"
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2019
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "영업이익"
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2019
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "영업이익"
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2020
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "영업이익"
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2020
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "영업이익"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "영업이익"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "영업이익"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "영업이익"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "영업이익"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "영업이익"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "영업이익"
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2018
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "영업이익"
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2018
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "영업이익"
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2019
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "영업이익"
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2019
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "영업이익"
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2020
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "영업이익"
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2020
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "영업이익"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "영업이익"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "영업이익"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "영업이익"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "영업이익"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "영업이익"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "영업이익"
+019170의 2018연도의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2018
+019170의 2018연도의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "영업이익"
+2018년 019170의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2018
+2018년 019170의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "영업이익"
+019170의 2019연도의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2019
+019170의 2019연도의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "영업이익"
+2019년 019170의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2019
+2019년 019170의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "영업이익"
+019170의 2020연도의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2020
+019170의 2020연도의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "영업이익"
+2020년 019170의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2020
+2020년 019170의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "영업이익"
+019170의 제 33 기 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "영업이익"
+제 33 기 019170의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "영업이익"
+019170의 제 34 기 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "영업이익"
+제 34 기 019170의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "영업이익"
+019170의 제 35 기 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "영업이익"
+제 35 기 019170의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 영업이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "영업이익"
+019170의 2018연도의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2018
+019170의 2018연도의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "영업이익"
+2018년 019170의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2018
+2018년 019170의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "영업이익"
+019170의 2019연도의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2019
+019170의 2019연도의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "영업이익"
+2019년 019170의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2019
+2019년 019170의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "영업이익"
+019170의 2020연도의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2020
+019170의 2020연도의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "영업이익"
+2020년 019170의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND bsns_year = 2020
+2020년 019170의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "영업이익"
+019170의 제 33 기 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "영업이익"
+제 33 기 019170의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "영업이익"
+019170의 제 34 기 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "영업이익"
+제 34 기 019170의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "영업이익"
+019170의 제 35 기 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "영업이익"
+제 35 기 019170의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "영업이익" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 영업이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "영업이익"
 법인세차감전 순이익은 어느 재무보고서에 속하니?	SELECT sj_nm FROM "019170" WHERE account_nm = "법인세차감전 순이익"
 법인세차감전 순이익은 어떤 재무제표야?	SELECT sj_nm FROM "019170" WHERE account_nm = "법인세차감전 순이익"
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2018
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "법인세차감전 순이익"
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2018
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "법인세차감전 순이익"
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2019
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "법인세차감전 순이익"
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2019
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "법인세차감전 순이익"
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2020
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "법인세차감전 순이익"
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2020
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "법인세차감전 순이익"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "법인세차감전 순이익"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "법인세차감전 순이익"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "법인세차감전 순이익"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "법인세차감전 순이익"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "법인세차감전 순이익"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "법인세차감전 순이익"
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2018
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "법인세차감전 순이익"
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2018
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "법인세차감전 순이익"
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2019
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "법인세차감전 순이익"
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2019
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "법인세차감전 순이익"
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2020
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "법인세차감전 순이익"
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2020
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "법인세차감전 순이익"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "법인세차감전 순이익"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "법인세차감전 순이익"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "법인세차감전 순이익"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "법인세차감전 순이익"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "법인세차감전 순이익"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "법인세차감전 순이익"
+019170의 2018연도의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2018
+019170의 2018연도의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "법인세차감전 순이익"
+2018년 019170의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2018
+2018년 019170의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "법인세차감전 순이익"
+019170의 2019연도의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2019
+019170의 2019연도의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "법인세차감전 순이익"
+2019년 019170의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2019
+2019년 019170의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "법인세차감전 순이익"
+019170의 2020연도의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2020
+019170의 2020연도의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "법인세차감전 순이익"
+2020년 019170의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2020
+2020년 019170의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "법인세차감전 순이익"
+019170의 제 33 기 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "법인세차감전 순이익"
+제 33 기 019170의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "법인세차감전 순이익"
+019170의 제 34 기 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "법인세차감전 순이익"
+제 34 기 019170의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "법인세차감전 순이익"
+019170의 제 35 기 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "법인세차감전 순이익"
+제 35 기 019170의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 법인세차감전 순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "법인세차감전 순이익"
+019170의 2018연도의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2018
+019170의 2018연도의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "법인세차감전 순이익"
+2018년 019170의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2018
+2018년 019170의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "법인세차감전 순이익"
+019170의 2019연도의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2019
+019170의 2019연도의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "법인세차감전 순이익"
+2019년 019170의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2019
+2019년 019170의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "법인세차감전 순이익"
+019170의 2020연도의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2020
+019170의 2020연도의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "법인세차감전 순이익"
+2020년 019170의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND bsns_year = 2020
+2020년 019170의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "법인세차감전 순이익"
+019170의 제 33 기 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "법인세차감전 순이익"
+제 33 기 019170의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "법인세차감전 순이익"
+019170의 제 34 기 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "법인세차감전 순이익"
+제 34 기 019170의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "법인세차감전 순이익"
+019170의 제 35 기 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "법인세차감전 순이익"
+제 35 기 019170의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "법인세차감전 순이익" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 법인세차감전 순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "법인세차감전 순이익"
 당기순이익은 어느 재무보고서에 속하니?	SELECT sj_nm FROM "019170" WHERE account_nm = "당기순이익"
 당기순이익은 어떤 재무제표야?	SELECT sj_nm FROM "019170" WHERE account_nm = "당기순이익"
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2018
-019170 2018연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "당기순이익"
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2018
-2018년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "당기순이익"
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2019
-019170 2019연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "당기순이익"
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2019
-2019년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "당기순이익"
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2020
-019170 2020연도의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "당기순이익"
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2020
-2020년 019170의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "당기순이익"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "당기순이익"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "당기순이익"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "당기순이익"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "당기순이익"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "당기순이익"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "당기순이익"
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2018
-019170 2018연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "당기순이익"
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2018
-2018년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "당기순이익"
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2019
-019170 2019연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "당기순이익"
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2019
-2019년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "당기순이익"
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2020
-019170 2020연도의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "당기순이익"
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2020
-2020년 019170의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "당기순이익"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 33 기"
-019170 제 33 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "당기순이익"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 33 기"
-제 33 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "당기순이익"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 34 기"
-019170 제 34 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "당기순이익"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 34 기"
-제 34 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "당기순이익"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 35 기"
-019170 제 35 기의 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "당기순이익"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 35 기"
-제 35 기의 019170 은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "당기순이익"
+019170의 2018연도의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2018
+019170의 2018연도의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "당기순이익"
+2018년 019170의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2018
+2018년 019170의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "당기순이익"
+019170의 2019연도의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2019
+019170의 2019연도의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "당기순이익"
+2019년 019170의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2019
+2019년 019170의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "당기순이익"
+019170의 2020연도의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2020
+019170의 2020연도의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "당기순이익"
+2020년 019170의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2020
+2020년 019170의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "당기순이익"
+019170의 제 33 기 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "당기순이익"
+제 33 기 019170의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "당기순이익"
+019170의 제 34 기 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "당기순이익"
+제 34 기 019170의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "당기순이익"
+019170의 제 35 기 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "당기순이익"
+제 35 기 019170의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 당기순이익은 얼마야?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "당기순이익"
+019170의 2018연도의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2018
+019170의 2018연도의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "당기순이익"
+2018년 019170의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2018
+2018년 019170의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2018 AND account_nm = "당기순이익"
+019170의 2019연도의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2019
+019170의 2019연도의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "당기순이익"
+2019년 019170의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2019
+2019년 019170의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2019 AND account_nm = "당기순이익"
+019170의 2020연도의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2020
+019170의 2020연도의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "당기순이익"
+2020년 019170의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND bsns_year = 2020
+2020년 019170의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE bsns_year = 2020 AND account_nm = "당기순이익"
+019170의 제 33 기 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 33 기"
+019170의 제 33 기 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "당기순이익"
+제 33 기 019170의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 33 기"
+제 33 기 019170의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 33 기" AND account_nm = "당기순이익"
+019170의 제 34 기 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 34 기"
+019170의 제 34 기 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "당기순이익"
+제 34 기 019170의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 34 기"
+제 34 기 019170의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 34 기" AND account_nm = "당기순이익"
+019170의 제 35 기 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 35 기"
+019170의 제 35 기 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "당기순이익"
+제 35 기 019170의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE account_nm = "당기순이익" AND thstrm_nm = "제 35 기"
+제 35 기 019170의 당기순이익은 어떻게 돼?	SELECT thstrm_amount FROM "019170" WHERE thstrm_nm = "제 35 기" AND account_nm = "당기순이익"
