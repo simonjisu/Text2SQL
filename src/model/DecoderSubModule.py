@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from .AttentionModule import C2QAttention, SelfAttention
 from typing import List, Dict, Any, Tuple, Union
+from copy import deepcopy
 
 class SelectDecoder(nn.Module):
     r"""SELECT Decoder"""
@@ -223,13 +224,16 @@ class WhereOpDecoder(nn.Module):
         header_summary = torch.cat([h for h in h_h[-2:]], dim=1).unsqueeze(1).repeat(1, n_col, 1)  # (B, T_c, H)
         col_context = torch.cat([o_c, header_summary], dim=2)  # (B, T_c, 2H)
         col_context = self.col_context_linear(col_context)  # (B, T_c, H)
-        col_context_padded = self.get_context_padded(col_context, where_nums, where_col_idxes, device)  # (B, max_where_col_nums, H)
+        # (B, max_where_col_nums, H), (B,)
+        col_context_padded = self.get_context_padded(col_context, where_nums, where_col_idxes, device)
         
-        col_q_context, attn = self.col2question_attn(col_context_padded, o_q, question_lengths, where_nums, rt_attn)  # (B, max_where_col_nums, H), (B, max_where_col_nums, T_q)
-        
+        # (B, max_where_col_nums, H), (B, max_where_col_nums, T_q)
+        col_q_context, attn = self.col2question_attn(col_context_padded, o_q, question_lengths, where_nums, rt_attn)  
         vec = torch.cat([col_q_context, col_context_padded], dim=2)  # (B, max_where_col_nums, 2H)
         output = self.output_layer(vec)  # (B, max_where_col_nums, n_cond_ops)
         # TODO: add penalty for padded header(column) information
+#         for i, l in enumerate(where_nums):
+#             output[:, i, :] = -1e10
         return output
         
     def get_context_padded(self, col_context, where_nums, where_col_idxes, device: str="cpu"):
@@ -238,7 +242,7 @@ class WhereOpDecoder(nn.Module):
         In case for have different where column lengths
         """
         batch_size, n_col, hidden_size = col_context.size()
-        max_where_col_nums = max(where_nums) 
+        max_where_col_nums = self.max_where_conds # max(where_nums) 
         batches = [col_context[i, batch_col] for i, batch_col in enumerate(where_col_idxes)]  # [(where_col_nums, hidden_size), ...]  len = B
         batches_padded = []
         for b in batches:
@@ -248,8 +252,7 @@ class WhereOpDecoder(nn.Module):
             else:
                 b_padded = b
             batches_padded.append(b_padded)  # (max_where_col_nums, hidden_size)
-            
-        return torch.stack(batches_padded) # (B, max_where_col_nums, hidden_size)
+        return torch.stack(batches_padded) # (B, max_where_col_nums, hidden_size), (B,)
     
     
 class WhereValueDecoder(nn.Module):
@@ -296,6 +299,7 @@ class WhereValueDecoder(nn.Module):
         g_wv_tkns = When Train should not be None
         
         """
+        
         device = col_padded.device
         batch_size, n_col, _ = col_padded.size()
         o_q, (h_q, c_q) = self.lstm_q(question_padded)  # o_q: (B, T_q, H)
@@ -305,7 +309,7 @@ class WhereValueDecoder(nn.Module):
         header_summary = torch.cat([h for h in h_h[-2:]], dim=1).unsqueeze(1).repeat(1, n_col, 1)  # (B, T_c, H)
         col_context = torch.cat([o_c, header_summary], dim=2)  # (B, T_c, 2H)
         col_context = self.col_context_linear(col_context)  # (B, T_c, H)
-        col_context_padded = self.get_context_padded(col_context, where_nums, where_col_idxes, device)  # (B, max_where_col_nums, H)
+        col_context_padded = self.get_context_padded(col_context, where_nums, where_col_idxes, device)  # (B, max_where_col_nums, H), (B,)
 
         col_q_context, attn = self.col2question_attn(col_context_padded, o_q, question_lengths, where_nums, rt_attn)  # (B, max_where_col_nums, H), (B, max_where_col_nums, T_q)
         where_op_one_hot_padded = self.get_where_op_one_hot_padded(
@@ -314,10 +318,19 @@ class WhereValueDecoder(nn.Module):
         where_op = self.where_op_linear(where_op_one_hot_padded)  # (B, max_where_col_nums, H)
 
         vec = torch.cat([col_q_context, col_context_padded, where_op], dim=2)  # (B, max_where_col_nums, 3H)
-        max_where_col_nums = vec.size(1)
+        
         # predict each where_col
         total_scores = []
-        for i in range(max_where_col_nums):
+        # max_where_col_nums = vec.size(1)
+        # for i in range(max_where_col_nums):
+        if g_wv_tkns is not None:
+            g_wv_tkns = deepcopy(g_wv_tkns)
+            g_max_len_where_num = len(list(zip(*g_wv_tkns)))
+            if g_max_len_where_num < self.max_where_conds:
+                for b in range(batch_size):
+                    g_wv_tkns[b].extend([[self.end_tkn_id]]*(self.max_where_conds-g_max_len_where_num))
+        for i in range(self.max_where_conds):
+            
             g_wv_tkns_i = torch.LongTensor([g_wv_tkns[b_idx][i] for b_idx in range(batch_size)]).to(device) if g_wv_tkns is not None else None  # (B, T_d_i)
             vec_i = vec[:, i, :]  # (B, 3H)
             
@@ -379,7 +392,7 @@ class WhereValueDecoder(nn.Module):
         In case for have different where column lengths
         """
         batch_size, n_col, hidden_size = col_context.size()
-        max_where_col_nums = max(where_nums)
+        max_where_col_nums = self.max_where_conds # max(where_nums)
         batches = [col_context[i, batch_col] for i, batch_col in enumerate(where_col_idxes)]  # [(where_col_nums, hidden_size), ...]  len = B
         batches_padded = []
         for b in batches:
@@ -389,7 +402,6 @@ class WhereValueDecoder(nn.Module):
             else:
                 b_padded = b
             batches_padded.append(b_padded)  # (max_where_col_nums, hidden_size)
-            
         return torch.stack(batches_padded) # (B, max_where_col_nums, hidden_size)
     
     def get_where_op_one_hot_padded(self, where_op_idxes: List[List[int]], where_nums: List[int], where_col_idxes: List[List[int]], n_cond_ops: int, device: str="cpu"):
@@ -397,7 +409,7 @@ class WhereValueDecoder(nn.Module):
         Turn where operation indexs into one hot encoded vectors
         In case for have different where column lengths
         """
-        max_where_col_nums = max(where_nums)
+        max_where_col_nums = self.max_where_conds # max(where_nums)
         batches = [
             torch.zeros(where_num, n_cond_ops).scatter(1, torch.LongTensor(batch_col).unsqueeze(1), 1).to(device) 
             for where_num, batch_col in zip(where_nums, where_op_idxes)

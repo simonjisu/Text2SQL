@@ -110,8 +110,8 @@ class Text2SQL(pl.LightningModule):
         # --- Get Inputs for Decoder ---
         input_question_mask, input_table_mask, input_header_mask, input_col_mask = self.get_input_mask_and_answer(encode_inputs, self.tokenizer_bert)
         question_padded, question_lengths = self.get_decoder_batches(encode_outputs, input_question_mask, pad_idx=self.tokenizer_bert.pad_token_id)
-        # table_padded, table_lengths = self.get_decoder_batches(encode_outputs, input_table_mask, pad_idx=self.tokenizer_bert.pad_token_id)  # Not used yet
-        header_padded, header_lengths = self.get_decoder_batches(encode_outputs, input_header_mask, pad_idx=self.tokenizer_bert.pad_token_id)
+        input_table_header_mask = torch.bitwise_or(input_table_mask, input_header_mask)
+        header_padded, header_lengths = self.get_decoder_batches(encode_outputs, input_table_header_mask, pad_idx=self.tokenizer_bert.pad_token_id)
         col_padded, col_lengths = self.get_decoder_batches(encode_outputs, input_col_mask, pad_idx=self.tokenizer_bert.pad_token_id)
         
         # --- Forward Decoder ---
@@ -324,7 +324,7 @@ class Text2SQL(pl.LightningModule):
         # get where value tokenized 
         pad_tkn_id = self.tokenizer_bert.pad_token_id
         g_wv_tkns = [[f"{s}{self.hparams.special_end_tkn}" for s in batch_wv] for batch_wv in g_wv]
-        g_wv_tkns = [self.tokenizer_bert(batch_wv, add_special_tokens=False)["input_ids"] for batch_wv in g_wv_tkns]
+        g_wv_tkns = [tokenizer(batch_wv, add_special_tokens=False)["input_ids"] if len(batch_wv) > 0 else batch_wv for batch_wv in g_wv_tkns]
         # add empty list if batch has different where column number
         max_where_cols = max([len(batch_wv) for batch_wv in g_wv_tkns])
         g_wv_tkns = [batch_wv + [[]]*(max_where_cols-len(batch_wv)) if len(batch_wv) < max_where_cols else batch_wv for batch_wv in g_wv_tkns]
@@ -339,7 +339,7 @@ class Text2SQL(pl.LightningModule):
                     batch_temp.append(wv_tkns)
             temp.append(batch_temp)
         g_wv_tkns = list(zip(*temp))
-        
+        g_wv_tkns = list(map(list, g_wv_tkns))
         return g_sc, g_sa, g_wn, g_wc, g_wo, g_wv, g_wv_tkns
         
         
@@ -372,64 +372,15 @@ class Text2SQL(pl.LightningModule):
             one_hot_dist = torch.zeros_like(decoder_outputs["wc"][batch_idx], device=self.device).scatter(0, self.totensor(g_wc[batch_idx]), 1.0)
             loss_wc += self.binary_cross_entropy(decoder_outputs["wc"][batch_idx], one_hot_dist)
 
-            batch_g_wo = g_wo[batch_idx]  # (where_num_gold,)
-            batch_wo = decoder_outputs["wo"][batch_idx, :where_num, :]  # (where_num_predict, n_cond_ops)
-            if (len(batch_wo) == 0 and where_num != 0):
-                # if predict nothing where clause and answer is not, what loss should be added?
-                # simply giving big loss will be enough?
-                loss_wo += loss_wn * 100
-            else:
-                give_wo_penalty = False
-                if len(batch_wo) > len(batch_g_wo): 
-                    wo_penalty = self.hparams.wo_penalty / 2
-                    give_wo_penalty = True
-                    batch_wo = batch_wo[:len(batch_g_wo), :]  # (where_num_predict, n_cond_ops)
-                elif len(batch_wo) < len(batch_g_wo):
-                    # giving penalty if not guessed right where numbers
-                    # It becomes problem when reduce the gold tokens but predicted corrected 
-                    # Then `loss_wo_base` will be 0, if simply multiply by `loss_wv_base` to loss_base will be zero
-                    wo_penalty = self.hparams.wo_penalty
-                    give_wo_penalty = True
-                    batch_g_wo = batch_g_wo[:len(batch_wo)]  # (where_num_gold,)
-                else:
-                    wo_penalty = 1.0
-                    give_wo_penalty = False
-                loss_wo_base = self.cross_entropy(batch_wo, self.totensor(batch_g_wo))
-                if give_wo_penalty:
-                    loss_wo += loss_wo_base + loss_wn * wo_penalty
-                else:
-                    loss_wo += loss_wo_base
+            batch_g_wo = g_wo[batch_idx]  # (where_num,)
+            batch_wo = decoder_outputs["wo"][batch_idx, :where_num, :]  # (where_num, n_cond_ops)
+            loss_wo += self.cross_entropy(batch_wo, totensor(batch_g_wo))
             
-            batch_g_wv = g_wv_tkns[batch_idx][:where_num]  # (where_num_gold, T_d_i)
-            batch_wv = [wv[batch_idx] for wv in decoder_outputs["wv"]]  # (where_num_predict, T_d_i, vocab_size)
-            if len(batch_wo) == 0 and where_num != 0:
-                # if predict nothing where clause and answer is not, what loss should be added?
-                loss_wv += loss_wn * 100
-                self.pp_wv(1e99)
-            else:
-                for wv, g_wv_i in zip(batch_wv, batch_g_wv):  # will iter by where_num
-                    give_wv_penalty = False
-                    if len(wv) > len(g_wv_i):
-                        wv_penalty = self.hparams.wo_penalty / 2
-                        give_wv_penalty = True
-                        wv = wv[:len(g_wv_i), :]  # (T_d_gold, vocab_size)
-                    elif len(wv) < len(g_wv_i):
-                        # giving penalty if not generate enough tokens
-                        # It becomes problem when reduce the gold tokens but predicted corrected 
-                        # Then `loss_wv_base` will be 0, if simply multiply by `loss_wv_base` to loss_base will be zero
-                        wv_penalty = self.hparams.wo_penalty
-                        give_wv_penalty = True
-                        g_wv_i = g_wv_i[:len(wv)]  # (T_d_predict,)
-                    else:
-                        wv_penalty = 1.0
-                        give_wv_penalty = False
-                    # now have the same T_d size, ignore all over lengthed
-                    loss_wv_base = self.cross_entropy(wv, self.totensor(g_wv_i))
-                    self.pp_wv(torch.exp(loss_wv_base))
-                    if give_wv_penalty:
-                        loss_wv += loss_wv_base + loss_wn * wv_penalty
-                    else:
-                        loss_wv += loss_wv_base
+            batch_g_wv = g_wv_tkns[batch_idx][:where_num]  # (where_num, T_d_i)
+            batch_wv = [wv[batch_idx] for wv in decoder_outputs["wv"]]  # (where_num, T_d_i, vocab_size)
+            for wv, g_wv_i in zip(batch_wv, batch_g_wv):
+                loss_wv += cross_entropy(wv, totensor(g_wv_i))
+        self.pp_wv.update(torch.exp(loss_wv) / batch_size)     
         loss = (loss_sc + loss_sa + loss_wn + loss_wc + loss_wo + loss_wv) / batch_size
         return loss
 

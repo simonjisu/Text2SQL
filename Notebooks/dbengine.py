@@ -37,11 +37,10 @@ class DBEngine:
         self.col2idx = col2idx
     
     def to_jsonl_table(self, table_id: str) -> dict:
-        if self.table_id is None:
-            self._reset()
-            self.get_schema_info(table_id)
+        self._reset()
+        self.get_schema_info(table_id)
         table = {"id": self.table_id, "header": list(self.schema), "types": list(self.schema.values()), "rows": []}
-        q = f"SELECT * FROM {self.table_id}"
+        q = f'SELECT * FROM "{self.table_id}"'
         res = self.db.query(q)
         for row in res.all():
             table["rows"].append(list(row.values()))
@@ -92,35 +91,62 @@ class DBEngine:
             raise TypeError(f"Parsed in select clause should be `str` or `dict` type, Current is {select_parsed}")
         select = self.col2idx.get(select_name)
         
-        conds_parsed = parsed["where"]
-        conds = []
-        for operator, conditions in conds_parsed.items():
-            # cond = {operator.upper(): []}
-            # Is operator always AND?
-            for condition in conditions:
-                key, values = tuple(condition.items())[0]
-
-                if self.cond_ops_dict.get(key) is None:
-                    raise KeyError(f"No operator: {key}")
-                else:
-                    op = self.cond_ops_dict.get(key)
-                    op_idx = self.cond_ops.index(op)
-                    
-                if self.col2idx.get(values[0]) is None:
-                    raise KeyError(f"No column name: {values[0]}")
-                else:
-                    col_idx = self.col2idx.get(values[0])
-                    
-                
-                if isinstance(values[1], dict):
-                    # make sure all string values insert '' when parse to sql again
-                    cond_value = values[1]["literal"]
-                else:
-                    cond_value = values[1]
-                # cond[operator.upper()].append([col_idx, op_idx, cond_value])
-                cond = [col_idx, op_idx, cond_value]
-                conds.append(cond)
         
+        conds = []
+        if parsed.get("where"):
+            conds_parsed = parsed["where"]
+            for operator, conditions in conds_parsed.items():
+                # cond = {operator.upper(): []}
+                # Is operator always AND?
+                if operator == "and":
+                    for condition in conditions:
+                        key, values = tuple(condition.items())[0]
+
+                        if self.cond_ops_dict.get(key) is None:
+                            raise KeyError(f"No operator: {key}")
+                        else:
+                            op = self.cond_ops_dict.get(key)
+                            op_idx = self.cond_ops.index(op)
+
+                        if self.col2idx.get(values[0]) is None:
+                            raise KeyError(f"No column name: {values[0]}")
+                        else:
+                            col_idx = self.col2idx.get(values[0])
+
+
+                        if isinstance(values[1], dict):
+                            # make sure all string values insert '' when parse to sql again
+                            cond_value = values[1]["literal"]
+                        else:
+                            cond_value = values[1]
+
+                        cond = [col_idx, op_idx, cond_value]
+                        conds.append(cond)
+                else:
+                    # only contains 1 condition
+                    key = operator
+                    values = conditions
+                    if self.cond_ops_dict.get(key) is None:
+                        raise KeyError(f"No operator: {key}")
+                    else:
+                        op = self.cond_ops_dict.get(key)
+                        op_idx = self.cond_ops.index(op)
+
+                    if self.col2idx.get(values[0]) is None:
+                        raise KeyError(f"No column name: {values[0]}")
+                    else:
+                        col_idx = self.col2idx.get(values[0])
+
+
+                    if isinstance(values[1], dict):
+                        # make sure all string values insert '' when parse to sql again
+                        cond_value = values[1]["literal"]
+                    else:
+                        cond_value = values[1]
+
+                    cond = [col_idx, op_idx, cond_value]
+                    conds.append(cond)
+                
         jsonl["sql"]["sel"] = select
         jsonl["sql"]["agg"] = agg
         jsonl["sql"]["conds"] = conds

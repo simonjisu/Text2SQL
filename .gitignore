@@ -137,4 +137,3 @@ logs/*
 ckpt/*
 .vscode
 train.log
-run_train.sh

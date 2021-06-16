@@ -6,17 +6,17 @@ def argument_parsing(preparse=False):
             formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     # Path & Dataloader
-    parser.add_argument("-dbp", "--db_path", type=str, default="./src/data/samsung_new.db",
+    parser.add_argument("-dbp", "--db_path", type=str, default="./src/data/kospi.db",
                    help="Path for database with *.db filename")
     parser.add_argument("-bertp", "--model_bert_path", type=str, default="monologg/kobert",
                    help="Path for BERT model")
-    parser.add_argument("-trainsql", "--train_sql_file", type=str, default="./src/data/NLSQL_train.jsonl",
+    parser.add_argument("-trainsql", "--train_sql_file", type=str, default="./src/data/train/train.jsonl",
                    help="Path for train sql path with *.jsonl filename")
-    parser.add_argument("-traintable", "--train_table_file", type=str, default="./src/data/table_train.jsonl",
+    parser.add_argument("-traintable", "--train_table_file", type=str, default="./src/data/train/train_table.jsonl",
                    help="Path for train table path with *.jsonl filename")
-    parser.add_argument("-evalsql", "--eval_sql_file", type=str, default="./src/data/NLSQL_test.jsonl",
+    parser.add_argument("-evalsql", "--eval_sql_file", type=str, default="./src/data/test/test.jsonl",
                    help="Path for eval sql path with *.jsonl filename")
-    parser.add_argument("-evaltable", "--eval_table_file", type=str, default="./src/data/table_test.jsonl",
+    parser.add_argument("-evaltable", "--eval_table_file", type=str, default="./src/data/test/test_table.jsonl",
                    help="Path for eval table path with *.jsonl filename")
     parser.add_argument("-logp", "--log_dir", type=str, default="./logs",
                    help="Record Path")
@@ -50,10 +50,7 @@ def argument_parsing(preparse=False):
     # Loss Function
     parser.add_argument("-pwn", "--wn_penalty", type=float, default=2.0,
                    help="Penalty for where number")
-    parser.add_argument("-pwo", "--wo_penalty", type=float, default=4.0,
-                   help="Penalty for where operator")
-    parser.add_argument("-pwv", "--wv_penalty", type=float, default=5.0,
-                   help="Penalty for where value")               
+   
     # Optimizer
     parser.add_argument("-nt", "--num_train", type=int, default=10,
                    help="Number of training epochs")

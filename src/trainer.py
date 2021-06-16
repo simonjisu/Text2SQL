@@ -40,8 +40,7 @@ def train(args):
         special_col_tkn = args.special_col_tkn,
         # Loss Function
         wn_penalty = args.wn_penalty,  # scale up for guessing where number
-        wo_penalty = args.wo_penalty,
-        wv_penalty = args.wv_penalty,  # giving penalty if not generate enough tokens, if generate more than answer lenght will give 1/2 of it
+        
         # Optimizer
         lr = args.lr,
         lr_bert = args.lr_bert
