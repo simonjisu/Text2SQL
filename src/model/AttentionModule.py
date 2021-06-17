@@ -9,17 +9,29 @@ class AttentionBase(nn.Module):
         super().__init__()
     
     def wipe_out_pad_tkn_score(self, score, lengths, dim=2):
+        batch_size = score.size(0)
+        mask = torch.zeros_like(score, dtype=torch.bool)
         max_len = max(lengths)
-        for batch_idx, length in enumerate(lengths):
-            if length < max_len:
+        for batch_idx in range(batch_size):
+            l = lengths[batch_idx]
+            if l < max_len:
                 if dim == 2:
-                    score[batch_idx, :, length:] = -10000000
+                    mask[batch_idx, :, l:] = True
                 elif dim == 1:
-                    score[batch_idx, length:, :] = 0.0
+                    mask[batch_idx, l:, :] = True
                 else:
                     raise ValueError(f"`dim` in wipe_out_pad_tkn_score should be 1 or 2")
-        return score 
-
+            if l == 0 and dim == 1:
+                # for 0 where numbers
+                mask[batch_idx, l:, :] = True
+        if dim == 2:
+            score = score.masked_fill(mask, -np.inf)
+        elif dim == 1:
+            score = score.masked_fill(mask, 0.0)
+        else:
+            raise ValueError(f"`dim` in wipe_out_pad_tkn_score should be 1 or 2")
+        
+        return score
 
 class C2QAttention(AttentionBase):
     r"""Decoder Column to Question Attention Module"""
@@ -38,7 +50,7 @@ class C2QAttention(AttentionBase):
         c_lengths: wipe out row length
         return context atttended to question tokens
         """
-        sqrt_H = np.sqrt(o_c.size(-1))# torch.sqrt(torch.FloatTensor([o_c.size(-1)]))  # Apply Attention is All you Need Technique
+        sqrt_H = np.sqrt(o_c.size(-1)) # Apply Attention is All you Need Technique
         o_q_transform = self.linear(o_q)  # (B, T_q, H)
         score_c2q = torch.bmm(o_c, o_q_transform.transpose(1, 2)) / sqrt_H  # (B, T_c, H) x (B, H, T_q) = (B, T_c, T_q)
         score_c2q = self.wipe_out_pad_tkn_score(score_c2q, q_lengths, dim=2)
