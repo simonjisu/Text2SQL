@@ -48,15 +48,22 @@ def train(args):
     )
 
     checkpoint_callback = pl.callbacks.ModelCheckpoint(
-        dirpath=args.ckpt_dir,
+        dirpath=(Path(args.ckpt_dir) / args.task),
         filename="epoch{epoch:02d}-{val_loss:.3f}-{val_acc_sc:.3f}-{val_acc_sa:.3f}-{val_acc_wn:.3f}-{val_acc_wo:.3f}",
         monitor="val_loss",
         save_top_k=3,
+        verbose=True,
         mode="min",
     )
     tb_logger = pl.loggers.TensorBoardLogger(Path(args.log_dir), name=args.task, default_hp_metric=False)
     # mlf_logger = pl.loggers.MLFlowLogger(tracking_uri=f"file:{args.log_dir}", experiment_name=args.task+"_mlf")
-    earlystop_callback = pl.callbacks.EarlyStopping("val_loss", mode="min")
+    earlystop_callback = pl.callbacks.EarlyStopping(
+        "val_loss",
+        min_delta=0.01,
+        patience=3,
+        verbose=True,
+        mode="min"
+    )
     pl.seed_everything(args.seed)
     model = Text2SQL(**args_dict)
     trainer = pl.Trainer(

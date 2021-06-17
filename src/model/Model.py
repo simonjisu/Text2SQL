@@ -401,7 +401,7 @@ class Text2SQL(pl.LightningModule):
                 elif len(wv) < len(g_wv_i):
                     g_wv_i = g_wv_i[:len(wv)] 
                 loss_wv += self.cross_entropy_wv(wv, self.totensor(g_wv_i))
-        self.pp_wv.update(torch.exp(loss_wv) / batch_size)     
+        self.pp_wv.update(torch.exp(loss_wv / batch_size))     
         loss = (loss_sc + loss_sa + loss_wn + loss_wc + loss_wo + loss_wv) / batch_size
         return loss
 
@@ -485,12 +485,12 @@ class Text2SQL(pl.LightningModule):
         self.calculate_metrics(outputs, batch_sqls)
 
         acc_sc, acc_sa, acc_wn, acc_wo, pp_wv = self.compute_all_metrics()
-        self.log("train_step_loss", loss, prog_bar=True, logger=True)
-        self.log("train_step_acc_sc", acc_sc, prog_bar=True, logger=True)
-        self.log("train_step_acc_sa", acc_sa, prog_bar=True, logger=True)
-        self.log("train_step_acc_wn", acc_wn, prog_bar=True, logger=True)
-        self.log("train_step_acc_wo", acc_wo, prog_bar=True, logger=True)
-        self.log("train_step_pp_wv", pp_wv, prog_bar=True, logger=True)
+        self.log("train_loss", loss, prog_bar=True, logger=True)
+        self.log("train_acc_sc", acc_sc, prog_bar=True, logger=True)
+        self.log("train_acc_sa", acc_sa, prog_bar=True, logger=True)
+        self.log("train_acc_wn", acc_wn, prog_bar=True, logger=True)
+        self.log("train_acc_wo", acc_wo, prog_bar=True, logger=True)
+        self.log("train_pp_wv", pp_wv, prog_bar=True, logger=True)
 
         return  {"loss": loss}
 
@@ -499,16 +499,7 @@ class Text2SQL(pl.LightningModule):
         for out in outputs:
             loss += out["loss"].detach().cpu()
         loss = loss / len(outputs)
-        
-        
-        acc_sc, acc_sa, acc_wn, acc_wo, pp_wv = self.compute_all_metrics()
-        self.log("train_loss", loss, prog_bar=False, logger=True)
-        self.log("train_acc_sc", acc_sc, prog_bar=False, logger=True)
-        self.log("train_acc_sa", acc_sa, prog_bar=False, logger=True)
-        self.log("train_acc_wn", acc_wn, prog_bar=True, logger=True)
-        self.log("train_acc_wo", acc_wo,  prog_bar=False, logger=True)
-        self.log("train_pp_wv", pp_wv, prog_bar=False, logger=True)
-    
+
         self.reset_metrics_epoch_end()
         # return {"train_loss": loss, "train_acc_sc": acc_sc, "train_acc_sa": acc_sa, "train_acc_wn": acc_wn, "train_acc_wo": acc_wo, "train_pp_wv": pp_wv}
     
