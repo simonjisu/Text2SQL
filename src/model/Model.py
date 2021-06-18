@@ -82,40 +82,70 @@ class Text2SQL(pl.LightningModule):
         self.pre_wc = torchmetrics.Precision()
         self.rec_wc = torchmetrics.Recall()
         
-        self.acc_wo = torchmetrics.Accuracy(num_classes=self.hparams.n_cond_ops+1) # add one to calculate if where number is missing
-        self.pre_wo = torchmetrics.Precision(num_classes=self.hparams.n_cond_ops+1)
-        self.rec_wo = torchmetrics.Recall(num_classes=self.hparams.n_cond_ops+1)
+        self.acc_wo = torchmetrics.Accuracy(num_classes=self.n_cond_ops+1) # add one to calculate if where number is missing
+        self.pre_wo = torchmetrics.Precision(num_classes=self.n_cond_ops+1)
+        self.rec_wo = torchmetrics.Recall(num_classes=self.n_cond_ops+1)
         
-        self.acc_wv = torchmetrics.Accuracy(num_classes=self.vocab_size, ignore_index=1)
-        self.pre_wv = torchmetrics.Precision(num_classes=self.vocab_size, ignore_index=1)
-        self.rec_wv = torchmetrics.Recall(num_classes=self.vocab_size, ignore_index=1)
+        self.acc_wv = torchmetrics.Accuracy(num_classes=self.vocab_size, ignore_index=self.tokenizer_bert.pad_token_id)
+        self.pre_wv = torchmetrics.Precision(num_classes=self.vocab_size, ignore_index=self.tokenizer_bert.pad_token_id)
+        self.rec_wv = torchmetrics.Recall(num_classes=self.vocab_size, ignore_index=self.tokenizer_bert.pad_token_id)
         
         self.pp_wv = Perplexity()
 
-#     def reset_metrics_epoch_end(self):
-#         """will be automatically called and epoch_end"""
-#         self.acc_sc.reset()
-#         self.pre_sc.reset()
-#         self.rec_sc.reset()
+    def reset_metrics_epoch_end(self):
+        """will be automatically called and epoch_end"""
+        self.acc_sc.reset()
+        self.pre_sc.reset()
+        self.rec_sc.reset()
 
-#         self.acc_sa.reset()
-#         self.pre_sa.reset()
-#         self.rec_sa.reset()
+        self.acc_sa.reset()
+        self.pre_sa.reset()
+        self.rec_sa.reset()
         
-#         self.acc_wn.reset()
-#         self.pre_wn.reset()
-#         self.rec_wn.reset()
+        self.acc_wn.reset()
+        self.pre_wn.reset()
+        self.rec_wn.reset()
         
-#         self.acc_wc.reset()
-#         self.pre_wc.reset()
-#         self.rec_wc.reset()
+        self.acc_wc.reset()
+        self.pre_wc.reset()
+        self.rec_wc.reset()
         
-#         self.acc_wo.reset()
-#         self.pre_wo.reset()
-#         self.rec_wo.reset()
+        self.acc_wo.reset()
+        self.pre_wo.reset()
+        self.rec_wo.reset()
         
-#         self.pp_wv.reset()
+        self.pp_wv.reset()
 
+    def log_metrics(self, mode):
+        self.log(f"{mode}_acc_sc", self.acc_sc, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_pre_sc", self.pre_sc, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_rec_sc", self.rec_sc, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+
+        self.log(f"{mode}_acc_sa", self.acc_sa, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_pre_sa", self.pre_sa, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_rec_sa", self.rec_sa, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        
+        self.log(f"{mode}_acc_wn", self.acc_wn, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_pre_wn", self.pre_wn, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_rec_wn", self.rec_wn, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+
+        self.log(f"{mode}_acc_wn", self.acc_wn, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_pre_wn", self.pre_wn, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_rec_wn", self.rec_wn, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+
+        self.log(f"{mode}_acc_wc", self.acc_wc, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_pre_wc", self.pre_wc, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_rec_wc", self.rec_wc, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+
+        self.log(f"{mode}_acc_wo", self.acc_wo, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_pre_wo", self.pre_wo, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_rec_wo", self.rec_wo, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+
+        self.log(f"{mode}_acc_wv", self.acc_wv, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_pre_wv", self.pre_wv, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log(f"{mode}_rec_wv", self.rec_wv, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        
+        self.log(f"{mode}_pp_wv", self.pp_wv, on_step=False, on_epoch=True, prog_bar=True, logger=True)
         
     def forward(self, batch_qs, batch_ts, batch_sqls=None, value_tkn_max_len=None, train=True):
         outputs, _ = self.forward_outputs(batch_qs, batch_ts, batch_sqls, value_tkn_max_len, train)
@@ -293,9 +323,7 @@ class Text2SQL(pl.LightningModule):
         g_wv_tkns = list(map(list, g_wv_tkns))
         return g_sc, g_sa, g_wn, g_wc, g_wo, g_wv, g_wv_tkns
         
-        
     def calculate_loss(self, decoder_outputs, gold):
-        # TODO issue #7
         """
         # Outputs Size
         sc = (B, T_c)
@@ -344,12 +372,13 @@ class Text2SQL(pl.LightningModule):
         # Predict tokens
         g_sc, g_sa, g_wn, g_wc, g_wo, _, g_wv_tkns = self.get_sql_answers(batch_sqls)
         predicts = self.predict_to_dict(decoder_outputs)
-        p_sc, p_sa, p_wn, p_wc, p_wo = predicts["sc"], predicts["sa"], predicts["wn"], predicts["wc"], predicts["wo"]
+        p_sc, p_sa, p_wn, p_wc, p_wo, p_wv_tkns = predicts["sc"], predicts["sa"], predicts["wn"], predicts["wc"], predicts["wo"], predicts["wv_tkns"]
         
         # Where Column
         p_wc, g_wc = self.pad_metrics(p_wc, g_wc, pad_idx=999)
-        p_wo, g_wo = self.pad_metrics(p_wo, g_wo, pad_idx=self.hparams.n_cond_ops)
+        p_wo, g_wo = self.pad_metrics(p_wo, g_wo, pad_idx=self.n_cond_ops)
         # select the where number first: (B, gold_where_nums, T_d)
+        p_wv_tkns = list(map(list, zip(*p_wv_tkns)))
         p_wv_tkns, g_wv_tkns = self.pad_metrics(p_wv_tkns, g_wv_tkns, 
                                            pad_idx=self.tokenizer_bert.pad_token_id)
 
@@ -381,47 +410,14 @@ class Text2SQL(pl.LightningModule):
             
             batch_g_wv_tkns = g_wv_tkns[batch_idx]
             batch_wv_tkns = p_wv_tkns[batch_idx]
-            batch_wv_tkns, batch_g_wv_tkns = pad_metrics(
+            batch_wv_tkns, batch_g_wv_tkns = self.pad_metrics(
                 batch_wv_tkns, batch_g_wv_tkns, pad_idx=self.tokenizer_bert.pad_token_id
-            )
-            self.acc_wv(*map(self.totensor, [batch_wv_tkns, batch_g_wv_tkns]))
-            self.pre_wv(*map(self.totensor_cpu, [batch_wv_tkns, batch_g_wv_tkns]))
-            self.rec_wv(*map(self.totensor_cpu, [batch_wv_tkns, batch_g_wv_tkns]))
-    
-    def compute_all_metrics(self):
-        acc_sc = self.acc_sc.compute()
-        pre_sc = self.pre_sc.compute()
-        rec_sc = self.rec_sc.compute()
-
-        acc_sa = self.acc_sa.compute()
-        pre_sa = self.pre_sa.compute()
-        rec_sa = self.rec_sa.compute()
-        
-        acc_wn = self.acc_wn.compute()
-        pre_wn = self.pre_wn.compute()
-        rec_wn = self.rec_wn.compute()
-        
-        acc_wc = self.acc_wc.compute()
-        pre_wc = self.pre_wc.compute()
-        rec_wc = self.rec_wc.compute()
-        
-        acc_wo = self.acc_wo.compute()
-        pre_wo = self.pre_wo.compute()
-        rec_wo = self.rec_wo.compute()
-        
-        acc_wv = self.acc_wv.compute()
-        pre_wv = self.pre_wv.compute()
-        rec_wv = self.rec_wv.compute()
-
-        pp_wv = self.pp_wv.compute()
-        
-        met_dict = {
-            "acc": [acc_sc, acc_sa, acc_wn, acc_wc, acc_wo, acc_wv],
-            "pre": [pre_sc, pre_sa, pre_wn, pre_wc, pre_wo, pre_wv],
-            "rec": [rec_sc, rec_sa, rec_wn, rec_wc, rec_wo, rec_wv],
-        }
-        
-        return met_dict
+            ) # each contains: (where_num, T_d_g)
+            for b_wv_tkns, b_g_wv_tkns in zip(batch_wv_tkns, batch_g_wv_tkns):
+                # iter for each where number tokens
+                self.acc_wv(*map(self.totensor_cpu, [b_wv_tkns, b_g_wv_tkns]))
+                self.pre_wv(*map(self.totensor_cpu, [b_wv_tkns, b_g_wv_tkns]))
+                self.rec_wv(*map(self.totensor_cpu, [b_wv_tkns, b_g_wv_tkns]))
     
     def pad_metrics(self, predict, gold, pad_idx=999):
         """
@@ -451,18 +447,6 @@ class Text2SQL(pl.LightningModule):
             res.append([p, g])
 
         return tuple(map(list, zip(*res)))
-    
-#     def pad_empty_predict_gold(self, predict, gold, pad_idx):
-#         res = []
-#         for p, g in zip(predict, gold):            
-#             if len(p) < len(g):
-#                 p.extend([pad_idx]*(len(g)-len(p)))
-#             elif len(p) > len(g):
-#                 g.extend([pad_idx]*(len(p)-len(g)))
-
-#             res.append([p, g])
-
-#         return list(zip(*res))
     
     def get_batch_data(self, data: List[Dict[str, Any]], table: Dict[str, Dict[str, List[Any]]], start_tkn="[S]", end_tkn="[E]", only_question=False) -> Tuple[List[str], List[str], List[Dict[str, Any]]]:
         """[summary]
@@ -505,30 +489,19 @@ class Text2SQL(pl.LightningModule):
             train=True
         )
         self.calculate_metrics(outputs, batch_sqls)
-        self.log("tr_loss_step", loss, on_step=True, on_epoch=True, prog_bar=True, logger=True)
-
-#         met_dict = self.compute_all_metrics()
-#         its = ["sc", "sa", "wn", "wc", "wo", "wv"]
-#         for (metric, values) in met_dict.items():
-#             for idx, item in enumerate(its):
-#                 self.log(f"tr_{metric}_{item}", values[idx], on_step=True, on_epoch=True, prog_bar=True, logger=True)
+        self.log("tr_loss_step", loss, on_step=True, on_epoch=False, prog_bar=True, logger=True)
 
         return  {"loss": loss}
 
     def train_epoch_end(self, outputs):
-        loss = torch.tensor(0, dtype=torch.float)
+        loss = torch.tensor(0, dtype=torch.float, device=self.device)
         for out in outputs:
-            loss += out["loss"].detach().cpu()
+            loss += out["loss"].detach()
         loss = loss / len(outputs)
-        self.log("tr_loss", loss, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log("tr_loss", loss, on_step=False, on_epoch=True, prog_bar=True, logger=True, sync_dist=True)
         
-        its = ["sc", "sa", "wn", "wc", "wo", "wv"]
-        met_dict = self.compute_all_metrics()
-        for (metric, values) in met_dict.items():
-            for idx, item in enumerate(its):
-                self.log(f"tr_{metric}_{item}", values[idx], on_step=False, on_epoch=True, prog_bar=True, logger=True)
-        
-        # self.reset_metrics_epoch_end()
+        self.log_metrics(mode="tr")
+        self.reset_metrics_epoch_end()
     
     def validation_step(self, batch, batch_idx):
         batch_qs, batch_ts, batch_sqls = self.get_batch_data(batch, self.table_dict["eval"], self.hparams.special_start_tkn, self.hparams.special_end_tkn)
@@ -544,19 +517,14 @@ class Text2SQL(pl.LightningModule):
         return {"loss": loss}
     
     def validation_epoch_end(self, outputs):
-        loss = torch.tensor(0, dtype=torch.float)
+        loss = torch.tensor(0, dtype=torch.float, device=self.device)
         for out in outputs:
-            loss += out["loss"].detach().cpu()
+            loss += out["loss"]
         loss = loss / len(outputs)
-        self.log("val_loss", loss, on_step=False, on_epoch=True, prog_bar=True, logger=True)
-        
-        its = ["sc", "sa", "wn", "wc", "wo", "wv"]
-        met_dict = self.compute_all_metrics()
-        for (metric, values) in met_dict.items():
-            for idx, item in enumerate(its):
-                self.log(f"val_{metric}_{item}", values[idx], on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log("val_loss", loss, on_step=False, on_epoch=True, prog_bar=True, logger=True, sync_dist=True)
 
-        # self.reset_metrics_epoch_end()
+        self.log_metrics(mode="val")
+        self.reset_metrics_epoch_end()
 
     def load_data(self, sql_path: Union[Path, str], table_path: Union[Path, str]) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
         """Load data from path
