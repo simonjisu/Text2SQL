@@ -46,10 +46,9 @@ def train(args):
         lr = args.lr,
         lr_bert = args.lr_bert
     )
-
     checkpoint_callback = pl.callbacks.ModelCheckpoint(
         dirpath=(Path(args.ckpt_dir) / args.task),
-        filename="epoch{epoch:02d}-{val_loss:.3f}-{val_acc_sc:.3f}-{val_acc_sa:.3f}-{val_acc_wn:.3f}-{val_acc_wo:.3f}",
+        filename="epoch{epoch:02d}-{val_loss:.3f}-{val_acc_sc:.3f}-{val_acc_sa:.3f}-{val_acc_wn:.3f}-{val_acc_wc:.3f}-{val_acc_wo:.3f}-{val_acc_wv:.3f}",
         monitor="val_loss",
         save_top_k=3,
         verbose=True,
@@ -59,7 +58,7 @@ def train(args):
     # mlf_logger = pl.loggers.MLFlowLogger(tracking_uri=f"file:{args.log_dir}", experiment_name=args.task+"_mlf")
     earlystop_callback = pl.callbacks.EarlyStopping(
         "val_loss",
-        min_delta=20,
+        min_delta=0.1,
         patience=3,
         verbose=True,
         mode="min"
@@ -71,10 +70,11 @@ def train(args):
         max_epochs=args.num_train,
         deterministic=torch.cuda.is_available(),
         gpus=args.num_gpus if torch.cuda.is_available() else None,
-        num_sanity_val_steps=1,
+        num_sanity_val_steps=0,
         accelerator="ddp",
         # num_nodes=1,
         logger=tb_logger,  #[tb_logger, mlf_logger]
         log_every_n_steps=args.log_every_n_steps
+        # profiler="simple"
     )
     trainer.fit(model)
