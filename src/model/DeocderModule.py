@@ -29,7 +29,7 @@ class Decoder(nn.Module):
         )
     
     
-    def forward(self, question_padded, db_padded, col_padded, question_lengths, col_lengths, value_tkn_max_len=None, gold=None):
+    def forward(self, question_padded, db_padded, col_padded, question_lengths, col_lengths, value_tkn_max_len=None, gold=None, rt_attn=False):
         """
         # Outputs Size
         # sc = (B, T_c)
@@ -43,26 +43,24 @@ class Decoder(nn.Module):
             g_sc, g_sa, g_wn, g_wc, g_wo, g_wv_tkns = [None] * 6
         else:
             g_sc, g_sa, g_wn, g_wc, g_wo, g_wv_tkns = gold
-        decoder_outputs = {}
 
-        select_outputs, _ = self.select_decoder(question_padded, db_padded, col_padded, question_lengths, col_lengths)
+        select_outputs, attn_c2q_sc = self.select_decoder(question_padded, db_padded, col_padded, question_lengths, col_lengths, rt_attn)
         select_idxes = g_sc if g_sc else self.predict_decoder("sc", select_outputs=select_outputs)
-        # select_idxes = self.predict_decoder("sc", select_outputs=select_outputs)
 
-        agg_outputs, _ = self.agg_decoder(question_padded, db_padded, col_padded, question_lengths, col_lengths, select_idxes)
+        agg_outputs, attn_c2q_sa = self.agg_decoder(question_padded, db_padded, col_padded, question_lengths, col_lengths, select_idxes, rt_attn)
 
-        where_num_outputs, _  = self.where_num_decoder(question_padded, db_padded, col_padded, question_lengths, col_lengths)
+        where_num_outputs, (attn_self_col_wn, attn_self_cntxt_wn)  = self.where_num_decoder(question_padded, db_padded, col_padded, question_lengths, col_lengths, rt_attn)
         where_nums = g_wn if g_wn else self.predict_decoder("wn", where_num_outputs=where_num_outputs)
-        # where_nums = self.predict_decoder("wn", where_num_outputs=where_num_outputs)
 
-        where_col_outputs, _ = self.where_col_decoder(question_padded, db_padded, col_padded, question_lengths, col_lengths)
+        where_col_outputs, attn_c2q_wc = self.where_col_decoder(question_padded, db_padded, col_padded, question_lengths, col_lengths, rt_attn)
         where_col_idxes = g_wc if g_wc else self.predict_decoder("wc", where_col_outputs=where_col_outputs, where_nums=where_nums)
-        # where_col_idxes = self.predict_decoder("wc", where_col_outputs=where_col_outputs, where_nums=where_nums)
 
-        where_op_outputs, _ = self.where_op_decoder(question_padded, db_padded, col_padded, question_lengths, where_nums, where_col_idxes)
+        where_op_outputs, attn_c2q_wo = self.where_op_decoder(question_padded, db_padded, col_padded, question_lengths, where_nums, where_col_idxes, rt_attn)
         where_op_idxes = g_wo if g_wo else self.predict_decoder("wo", where_op_outputs=where_op_outputs, where_nums=where_nums)
-        # where_op_idxes = self.predict_decoder("wo", where_op_outputs=where_op_outputs, where_nums=where_nums)
-        where_value_outputs, _ = self.where_value_decoder(question_padded, db_padded, col_padded, question_lengths, where_nums, where_col_idxes, where_op_idxes, value_tkn_max_len, g_wv_tkns)
+
+        where_value_outputs, attn_c2q_wv = self.where_value_decoder(
+            question_padded, db_padded, col_padded, question_lengths, where_nums, where_col_idxes, where_op_idxes, value_tkn_max_len, g_wv_tkns, rt_attn
+        )
         
         decoder_outputs = {
             "sc": select_outputs,  # cross entropy
@@ -73,7 +71,16 @@ class Decoder(nn.Module):
             "wv": where_value_outputs  # cross entropy
         }
         
-        return decoder_outputs
+        decoder_attns = {
+            "sc": attn_c2q_sc,  # cross entropy
+            "sa": attn_c2q_sa,  # cross entropy
+            "wn": (attn_self_col_wn, attn_self_cntxt_wn),  # cross entropy
+            "wc": attn_c2q_wc,  # binary cross entropy
+            "wo": attn_c2q_wo,  # cross entropy
+            "wv": attn_c2q_wv  # cross entropy
+        }
+        
+        return decoder_outputs, decoder_attns
         
     def predict_decoder(self, typ, **kwargs):
         r"""

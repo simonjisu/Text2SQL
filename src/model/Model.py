@@ -80,13 +80,13 @@ class Text2SQL(pl.LightningModule):
         self.pp_wv.reset()
         
     def forward(self, batch_qs, batch_ts, batch_sqls=None, value_tkn_max_len=None, train=True):
-        outputs = self.forward_outputs(batch_qs, batch_ts, batch_sqls, value_tkn_max_len, train)
+        outputs, _ = self.forward_outputs(batch_qs, batch_ts, batch_sqls, value_tkn_max_len, train)
         g_sc, g_sa, g_wn, g_wc, g_wo, _, g_wv_tkns = self.get_sql_answers(batch_sqls)
         gold = [g_sc, g_sa, g_wn, g_wc, g_wo, g_wv_tkns]
         loss = self.calculate_loss(outputs, gold)  # when calculate loss must need gold answer
         return loss, outputs
             
-    def forward_outputs(self, batch_qs, batch_ts, batch_sqls=None, value_tkn_max_len=None, train=True):
+    def forward_outputs(self, batch_qs, batch_ts, batch_sqls=None, value_tkn_max_len=None, train=True, rt_attn=False):
         # --- Get Answer & Variables ---
         if train:
             assert value_tkn_max_len is None, "In train phase, `value_tkn_max_len` must be None"
@@ -94,7 +94,7 @@ class Text2SQL(pl.LightningModule):
             g_sc, g_sa, g_wn, g_wc, g_wo, _, g_wv_tkns = self.get_sql_answers(batch_sqls)
             gold = [g_sc, g_sa, g_wn, g_wc, g_wo, g_wv_tkns]
         else:
-            assert value_tkn_max_len is not None, "In validation Phase, `value_tkn_max_len` must not be None"
+            assert value_tkn_max_len is not None, "In test Phase, `value_tkn_max_len` must not be None"
             gold = None
             value_tkn_max_len = value_tkn_max_len
             
@@ -107,7 +107,7 @@ class Text2SQL(pl.LightningModule):
         ).to(self.device)  # encode_input doesn't return the cuda device
         
         # --- Forward Encoder ---
-        encode_outputs = self.model_bert(**encode_inputs)
+        encode_outputs = self.model_bert(**encode_inputs, output_attentions=rt_attn)
         
         # --- Get Inputs for Decoder ---
         input_question_mask, input_db_mask, input_col_mask = self.get_input_mask(encode_inputs)
@@ -116,17 +116,23 @@ class Text2SQL(pl.LightningModule):
         col_padded, col_lengths = self.get_decoder_batches(encode_outputs, input_col_mask, pad_idx=self.tokenizer_bert.pad_token_id)
         
         # --- Forward Decoder ---
-        decoder_outputs = self.model_decoder(
+        decoder_outputs, decoder_attns = self.model_decoder(
             question_padded, 
             db_padded, 
             col_padded, 
             question_lengths, 
             col_lengths, 
             value_tkn_max_len, 
-            gold
+            gold,
+            rt_attn
         )
         
-        return decoder_outputs
+        attns = {
+            "encoder": encode_outputs.attentions,
+            "decoder": decoder_attns
+        }
+        
+        return decoder_outputs, attns
 
     def get_input_mask(self, encode_inputs):
         sep_tkn_mask = encode_inputs["input_ids"] == self.tokenizer_bert.sep_token_id
@@ -143,116 +149,6 @@ class Text2SQL(pl.LightningModule):
         
         return input_question_mask, db_mask, col_tkn_mask
 
-
-    # def get_input_mask_and_answer(self, encode_input: transformers.tokenization_utils_base.BatchEncoding, tokenizer: KoBertTokenizer) -> Tuple[torch.BoolTensor, torch.BoolTensor, torch.BoolTensor, torch.BoolTensor]:
-    #     """[summary]
-
-    #     In this code 'table' means database table name(id), 'header' means database header, 'col' means index of header 
-
-    #     Args:
-    #         encode_input (transformers.tokenization_utils_base.BatchEncoding): [description]
-    #         tokenizer (KoBertTokenizer): [description]
-
-    #     Returns:
-    #         Tuple[torch.BoolTensor, torch.BoolTensor, torch.BoolTensor, torch.BoolTensor]: [description]
-    #     """
-
-    #     batch_size, max_length = encode_input["input_ids"].size()
-    #     sep_tkn_mask = encode_input["input_ids"] == tokenizer.sep_token_id
-    #     start_tkn_id, end_tkn_id, col_tkn_id = tokenizer.additional_special_tokens_ids
-
-    #     input_question_mask = torch.bitwise_and(encode_input["token_type_ids"] == 0, encode_input["attention_mask"].bool()).contiguous()
-    #     input_question_mask = torch.bitwise_and(input_question_mask, ~sep_tkn_mask).contiguous() # [SEP] mask out
-    #     input_question_mask[:, 0] = False  # [CLS] mask out
-
-    #     db_mask = torch.bitwise_and(encode_input["token_type_ids"] == 1, encode_input["attention_mask"].bool()).contiguous()
-    #     db_mask = torch.bitwise_xor(db_mask, sep_tkn_mask).contiguous()
-    #     col_tkn_mask = encode_input["input_ids"] == col_tkn_id
-    #     db_mask = torch.bitwise_and(db_mask, ~col_tkn_mask).contiguous()
-    #     # split table_mask and header_mask
-    #     input_idx = torch.arange(max_length).repeat(batch_size, 1).to(self.device).contiguous()
-    #     db_idx = input_idx[db_mask]
-    #     table_header_tkn_idx = db_idx[db_idx > 0]
-    #     table_start_idx = table_header_tkn_idx.view(batch_size, -1)[:, 0] + 1
-    #     start_idx = table_header_tkn_idx[1:][table_header_tkn_idx.diff() == 2].view(batch_size, -1)
-    #     table_end_sep_idx = start_idx[:, 0] - 1
-    #     split_size = torch.stack([
-    #         table_end_sep_idx-table_start_idx+1, table_header_tkn_idx.view(batch_size, -1).size(1)-(table_end_sep_idx-table_start_idx+1)
-    #     ]).transpose(0, 1)
-
-    #     # Token idx
-    #     table_tkn_idx, header_tkn_idx = map(
-    #         lambda x: torch.stack(x).to(self.device), 
-    #         zip(*[torch.split(x, size.tolist()) for x, size in zip(table_header_tkn_idx.view(batch_size, -1), split_size)])
-    #     )
-
-    #     table_tkn_idx = table_tkn_idx[:, 1:]
-
-    #     # TODO: [EXP] Experiment for generate column directly
-    #     # If [EXP], `table_tkn_mask` and `header_tkn_mask` should include [S] & [E] tokens
-    #     table_tkn_mask = torch.zeros_like(encode_input["input_ids"], dtype=torch.bool, device=self.device).scatter(1, table_tkn_idx, True).contiguous()
-    #     header_tkn_mask = torch.zeros_like(encode_input["input_ids"], dtype=torch.bool, device=self.device).scatter(1, header_tkn_idx, True).contiguous()
-
-    #     # TODO: [EXP] Experiment for generate column directly
-    #     # For Decoder Input, Maskout [S], [E] for table & header -> will be done automatically
-    #     input_table_mask = self.get_decoder_input_mask(
-    #         encode_input["input_ids"], table_tkn_mask, batch_size, start_tkn_id, end_tkn_id
-    #     )
-    #     input_header_mask = self.get_decoder_input_mask(
-    #         encode_input["input_ids"], header_tkn_mask, batch_size, start_tkn_id, end_tkn_id
-    #     )
-
-    #     # [COL] token mask: this is for attention
-    #     col_tkn_idx = input_idx[col_tkn_mask].view(batch_size, -1)
-    #     input_col_mask = torch.zeros_like(encode_input["input_ids"], device=self.device, dtype=torch.bool).scatter(1, col_tkn_idx, True).contiguous()
-
-    #     # TODO: [EXP] Experiment for generate column directly
-    #     # For Answer, Maskout [S] for table & header 
-    #     # answer_table_tkns = get_answer(
-    #     #     encode_input["input_ids"], table_tkn_mask, batch_size, start_tkn_id, end_tkn_id
-    #     # )
-    #     # answer_header_tkns = get_answer(
-    #     #     encode_input["input_ids"], header_tkn_mask, batch_size, start_tkn_id, end_tkn_id
-    #     # )
-
-    #     return input_question_mask, input_table_mask, input_header_mask, input_col_mask # , answer_table_tkns, answer_header_tkns    
-
-    ## Masks
-    # TODO: [EXP] Experiment for generate column directly
-    # def get_answer(input_ids, mask, batch_size, start_tkn_id, end_tkn_id):
-    #     r"""
-    #     answer should include end token: [E]
-    #     """
-    #     masked_input_ids = input_ids[mask]
-    #     start_tkn_mask = masked_input_ids == start_tkn_id
-    #     end_tkn_mask = masked_input_ids == end_tkn_id
-    #     table_col_length = masked_input_ids.view(batch_size, -1).size(1)
-    #     start_end_mask = torch.bitwise_or(start_tkn_mask, end_tkn_mask)
-    #     index = torch.arange(table_col_length).repeat(batch_size)[start_end_mask].view(batch_size, -1, 2)
-    #     tkn_lengths = index[:, :, 1] - index[:, :, 0]
-    #     answer_col_tkns = [x.split(tkn_length.tolist()) for x, tkn_length in zip(
-    #         masked_input_ids[~start_tkn_mask].view(batch_size, -1), tkn_lengths)]
-    #     return answer_col_tkns
-
-    # def get_decoder_input_mask(self, input_ids: torch.Tensor, mask: torch.BoolTensor, batch_size: int, start_tkn_id: int, end_tkn_id: int) -> torch.BoolTensor:
-    #     """[summary]
-
-    #     Args:
-    #         input_ids (torch.Tensor): [description]
-    #         mask (torch.BoolTensor): [description]
-    #         batch_size (int): [description]
-    #         start_tkn_id (int): [description]
-    #         end_tkn_id (int): [description]
-
-    #     Returns:
-    #         torch.BoolTensor: [description]
-    #     """    
-    #     start_tkn_mask = input_ids == start_tkn_id
-    #     end_tkn_mask = input_ids == end_tkn_id
-    #     start_end_mask = torch.bitwise_or(start_tkn_mask, end_tkn_mask)
-    #     index = torch.arange(input_ids.size(1)).repeat(batch_size)[start_end_mask.view(-1)].view(batch_size, -1).contiguous()
-    #     return mask.scatter(1, index, False)
-    
     def get_decoder_batches(self, encode_output: transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions, mask: torch.BoolTensor, pad_idx: int) -> Tuple[torch.Tensor, List[int]]:
         """[summary]
 
@@ -361,6 +257,7 @@ class Text2SQL(pl.LightningModule):
         
         
     def calculate_loss(self, decoder_outputs, gold):
+        # TODO issue #7
         """
         # Outputs Size
         sc = (B, T_c)
@@ -625,7 +522,118 @@ class Text2SQL(pl.LightningModule):
         
         return predicts
 
-    def predict_outputs(self, data, table):
+    def predict_outputs(self, data, table, rt_attn=False):
         batch_qs, batch_ts = self.get_batch_data(data, table, only_question=True)
-        outputs = self.forward_outputs(batch_qs, batch_ts, batch_sqls=None, value_tkn_max_len=self.hparams.value_tkn_max_len, train=False)
-        return self.predict_to_dict(outputs)
+        outputs, attns = self.forward_outputs(batch_qs, batch_ts, batch_sqls=None, value_tkn_max_len=self.hparams.value_tkn_max_len, train=False, rt_attn=rt_attn)
+        return self.predict_to_dict(outputs), attns
+    
+
+    # def get_input_mask_and_answer(self, encode_input: transformers.tokenization_utils_base.BatchEncoding, tokenizer: KoBertTokenizer) -> Tuple[torch.BoolTensor, torch.BoolTensor, torch.BoolTensor, torch.BoolTensor]:
+    #     """[summary]
+
+    #     In this code 'table' means database table name(id), 'header' means database header, 'col' means index of header 
+
+    #     Args:
+    #         encode_input (transformers.tokenization_utils_base.BatchEncoding): [description]
+    #         tokenizer (KoBertTokenizer): [description]
+
+    #     Returns:
+    #         Tuple[torch.BoolTensor, torch.BoolTensor, torch.BoolTensor, torch.BoolTensor]: [description]
+    #     """
+
+    #     batch_size, max_length = encode_input["input_ids"].size()
+    #     sep_tkn_mask = encode_input["input_ids"] == tokenizer.sep_token_id
+    #     start_tkn_id, end_tkn_id, col_tkn_id = tokenizer.additional_special_tokens_ids
+
+    #     input_question_mask = torch.bitwise_and(encode_input["token_type_ids"] == 0, encode_input["attention_mask"].bool()).contiguous()
+    #     input_question_mask = torch.bitwise_and(input_question_mask, ~sep_tkn_mask).contiguous() # [SEP] mask out
+    #     input_question_mask[:, 0] = False  # [CLS] mask out
+
+    #     db_mask = torch.bitwise_and(encode_input["token_type_ids"] == 1, encode_input["attention_mask"].bool()).contiguous()
+    #     db_mask = torch.bitwise_xor(db_mask, sep_tkn_mask).contiguous()
+    #     col_tkn_mask = encode_input["input_ids"] == col_tkn_id
+    #     db_mask = torch.bitwise_and(db_mask, ~col_tkn_mask).contiguous()
+    #     # split table_mask and header_mask
+    #     input_idx = torch.arange(max_length).repeat(batch_size, 1).to(self.device).contiguous()
+    #     db_idx = input_idx[db_mask]
+    #     table_header_tkn_idx = db_idx[db_idx > 0]
+    #     table_start_idx = table_header_tkn_idx.view(batch_size, -1)[:, 0] + 1
+    #     start_idx = table_header_tkn_idx[1:][table_header_tkn_idx.diff() == 2].view(batch_size, -1)
+    #     table_end_sep_idx = start_idx[:, 0] - 1
+    #     split_size = torch.stack([
+    #         table_end_sep_idx-table_start_idx+1, table_header_tkn_idx.view(batch_size, -1).size(1)-(table_end_sep_idx-table_start_idx+1)
+    #     ]).transpose(0, 1)
+
+    #     # Token idx
+    #     table_tkn_idx, header_tkn_idx = map(
+    #         lambda x: torch.stack(x).to(self.device), 
+    #         zip(*[torch.split(x, size.tolist()) for x, size in zip(table_header_tkn_idx.view(batch_size, -1), split_size)])
+    #     )
+
+    #     table_tkn_idx = table_tkn_idx[:, 1:]
+
+    #     # TODO: [EXP] Experiment for generate column directly
+    #     # If [EXP], `table_tkn_mask` and `header_tkn_mask` should include [S] & [E] tokens
+    #     table_tkn_mask = torch.zeros_like(encode_input["input_ids"], dtype=torch.bool, device=self.device).scatter(1, table_tkn_idx, True).contiguous()
+    #     header_tkn_mask = torch.zeros_like(encode_input["input_ids"], dtype=torch.bool, device=self.device).scatter(1, header_tkn_idx, True).contiguous()
+
+    #     # TODO: [EXP] Experiment for generate column directly
+    #     # For Decoder Input, Maskout [S], [E] for table & header -> will be done automatically
+    #     input_table_mask = self.get_decoder_input_mask(
+    #         encode_input["input_ids"], table_tkn_mask, batch_size, start_tkn_id, end_tkn_id
+    #     )
+    #     input_header_mask = self.get_decoder_input_mask(
+    #         encode_input["input_ids"], header_tkn_mask, batch_size, start_tkn_id, end_tkn_id
+    #     )
+
+    #     # [COL] token mask: this is for attention
+    #     col_tkn_idx = input_idx[col_tkn_mask].view(batch_size, -1)
+    #     input_col_mask = torch.zeros_like(encode_input["input_ids"], device=self.device, dtype=torch.bool).scatter(1, col_tkn_idx, True).contiguous()
+
+    #     # TODO: [EXP] Experiment for generate column directly
+    #     # For Answer, Maskout [S] for table & header 
+    #     # answer_table_tkns = get_answer(
+    #     #     encode_input["input_ids"], table_tkn_mask, batch_size, start_tkn_id, end_tkn_id
+    #     # )
+    #     # answer_header_tkns = get_answer(
+    #     #     encode_input["input_ids"], header_tkn_mask, batch_size, start_tkn_id, end_tkn_id
+    #     # )
+
+    #     return input_question_mask, input_table_mask, input_header_mask, input_col_mask # , answer_table_tkns, answer_header_tkns    
+
+    ## Masks
+    # TODO: [EXP] Experiment for generate column directly
+    # def get_answer(input_ids, mask, batch_size, start_tkn_id, end_tkn_id):
+    #     r"""
+    #     answer should include end token: [E]
+    #     """
+    #     masked_input_ids = input_ids[mask]
+    #     start_tkn_mask = masked_input_ids == start_tkn_id
+    #     end_tkn_mask = masked_input_ids == end_tkn_id
+    #     table_col_length = masked_input_ids.view(batch_size, -1).size(1)
+    #     start_end_mask = torch.bitwise_or(start_tkn_mask, end_tkn_mask)
+    #     index = torch.arange(table_col_length).repeat(batch_size)[start_end_mask].view(batch_size, -1, 2)
+    #     tkn_lengths = index[:, :, 1] - index[:, :, 0]
+    #     answer_col_tkns = [x.split(tkn_length.tolist()) for x, tkn_length in zip(
+    #         masked_input_ids[~start_tkn_mask].view(batch_size, -1), tkn_lengths)]
+    #     return answer_col_tkns
+
+    # def get_decoder_input_mask(self, input_ids: torch.Tensor, mask: torch.BoolTensor, batch_size: int, start_tkn_id: int, end_tkn_id: int) -> torch.BoolTensor:
+    #     """[summary]
+
+    #     Args:
+    #         input_ids (torch.Tensor): [description]
+    #         mask (torch.BoolTensor): [description]
+    #         batch_size (int): [description]
+    #         start_tkn_id (int): [description]
+    #         end_tkn_id (int): [description]
+
+    #     Returns:
+    #         torch.BoolTensor: [description]
+    #     """    
+    #     start_tkn_mask = input_ids == start_tkn_id
+    #     end_tkn_mask = input_ids == end_tkn_id
+    #     start_end_mask = torch.bitwise_or(start_tkn_mask, end_tkn_mask)
+    #     index = torch.arange(input_ids.size(1)).repeat(batch_size)[start_end_mask.view(-1)].view(batch_size, -1).contiguous()
+    #     return mask.scatter(1, index, False)
+    
