@@ -72,9 +72,9 @@ def train(args):
         gpus=args.num_gpus if torch.cuda.is_available() else None,
         num_sanity_val_steps=0,
         accelerator="ddp",
-        # num_nodes=1,
+        num_nodes=1,
         logger=tb_logger,  #[tb_logger, mlf_logger]
-        log_every_n_steps=args.log_every_n_steps
-        # profiler="simple"
+        log_every_n_steps=args.log_every_n_steps,
+        profiler="simple"
     )
     trainer.fit(model)

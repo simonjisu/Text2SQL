@@ -10,7 +10,7 @@ class Perplexity(torchmetrics.Metric):
         
     def update(self, pp: torch.Tensor):
         self.pp += pp
-        self.cnt += 1
+        self.cnt += 1.0
 
     def compute(self):
         return self.pp / self.cnt
