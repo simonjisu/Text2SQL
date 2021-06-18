@@ -65,19 +65,57 @@ class Text2SQL(pl.LightningModule):
         self.cross_entropy = nn.CrossEntropyLoss(reduction="sum")
         self.binary_cross_entropy = nn.BCEWithLogitsLoss(reduction="sum")
         self.cross_entropy_wv = nn.CrossEntropyLoss(reduction="sum", ignore_index=1)
-
+        
         self.acc_sc = torchmetrics.Accuracy()
+        self.pre_sc = torchmetrics.Precision()
+        self.rec_sc = torchmetrics.Recall()
+
         self.acc_sa = torchmetrics.Accuracy(num_classes=self.n_agg_ops)
+        self.pre_sa = torchmetrics.Precision(num_classes=self.n_agg_ops)
+        self.rec_sa = torchmetrics.Recall(num_classes=self.n_agg_ops)
+        
         self.acc_wn = torchmetrics.Accuracy(num_classes=self.hparams.max_where_conds+1)
-        self.acc_wo = torchmetrics.Accuracy(num_classes=self.n_cond_ops+1) # add one to calculate if where number is missing
+        self.pre_wn = torchmetrics.Precision(num_classes=self.hparams.max_where_conds+1)
+        self.rec_wn = torchmetrics.Recall(num_classes=self.hparams.max_where_conds+1)
+        
+        self.acc_wc = torchmetrics.Accuracy()
+        self.pre_wc = torchmetrics.Precision()
+        self.rec_wc = torchmetrics.Recall()
+        
+        self.acc_wo = torchmetrics.Accuracy(num_classes=self.hparams.n_cond_ops+1) # add one to calculate if where number is missing
+        self.pre_wo = torchmetrics.Precision(num_classes=self.hparams.n_cond_ops+1)
+        self.rec_wo = torchmetrics.Recall(num_classes=self.hparams.n_cond_ops+1)
+        
+        self.acc_wv = torchmetrics.Accuracy(num_classes=self.vocab_size, ignore_index=1)
+        self.pre_wv = torchmetrics.Precision(num_classes=self.vocab_size, ignore_index=1)
+        self.rec_wv = torchmetrics.Recall(num_classes=self.vocab_size, ignore_index=1)
+        
         self.pp_wv = Perplexity()
 
-    def reset_metrics_epoch_end(self):
-        self.acc_sc.reset()
-        self.acc_sa.reset()
-        self.acc_wn.reset()
-        self.acc_wo.reset()
-        self.pp_wv.reset()
+#     def reset_metrics_epoch_end(self):
+#         """will be automatically called and epoch_end"""
+#         self.acc_sc.reset()
+#         self.pre_sc.reset()
+#         self.rec_sc.reset()
+
+#         self.acc_sa.reset()
+#         self.pre_sa.reset()
+#         self.rec_sa.reset()
+        
+#         self.acc_wn.reset()
+#         self.pre_wn.reset()
+#         self.rec_wn.reset()
+        
+#         self.acc_wc.reset()
+#         self.pre_wc.reset()
+#         self.rec_wc.reset()
+        
+#         self.acc_wo.reset()
+#         self.pre_wo.reset()
+#         self.rec_wo.reset()
+        
+#         self.pp_wv.reset()
+
         
     def forward(self, batch_qs, batch_ts, batch_sqls=None, value_tkn_max_len=None, train=True):
         outputs, _ = self.forward_outputs(batch_qs, batch_ts, batch_sqls, value_tkn_max_len, train)
@@ -304,32 +342,127 @@ class Text2SQL(pl.LightningModule):
 
     def calculate_metrics(self, decoder_outputs, batch_sqls) -> None:
         # Predict tokens
-        g_sc, g_sa, g_wn, g_wc, g_wo, g_wv, g_wv_tkns = self.get_sql_answers(batch_sqls)
+        g_sc, g_sa, g_wn, g_wc, g_wo, _, g_wv_tkns = self.get_sql_answers(batch_sqls)
         predicts = self.predict_to_dict(decoder_outputs)
-        p_sc, p_sa, p_wn, p_wo = predicts["sc"], predicts["sa"], predicts["wn"], predicts["wo"]
+        p_sc, p_sa, p_wn, p_wc, p_wo = predicts["sc"], predicts["sa"], predicts["wn"], predicts["wc"], predicts["wo"]
         
-        p_wo, g_wo = self.pad_empty_predict_gold(p_wo, g_wo, pad_idx=self.n_cond_ops)  # (B, where_col_num)
+        # Where Column
+        p_wc, g_wc = self.pad_metrics(p_wc, g_wc, pad_idx=999)
+        p_wo, g_wo = self.pad_metrics(p_wo, g_wo, pad_idx=self.hparams.n_cond_ops)
+        # select the where number first: (B, gold_where_nums, T_d)
+        p_wv_tkns, g_wv_tkns = self.pad_metrics(p_wv_tkns, g_wv_tkns, 
+                                           pad_idx=self.tokenizer_bert.pad_token_id)
+
+        self.acc_sc(*map(self.totensor_cpu, [p_sc, g_sc]))
+        self.pre_sc(*map(self.totensor_cpu, [p_sc, g_sc]))
+        self.rec_sc(*map(self.totensor_cpu, [p_sc, g_sc]))
+
+        self.acc_sa(*map(self.totensor_cpu, [p_sa, g_sa]))
+        self.pre_sa(*map(self.totensor_cpu, [p_sa, g_sa]))
+        self.rec_sa(*map(self.totensor_cpu, [p_sa, g_sa]))
         
-        acc_sc = self.acc_sc(*map(self.totensor_cpu, [p_sc, g_sc]))
-        acc_sa = self.acc_sa(*map(self.totensor_cpu, [p_sa, g_sa]))
-        acc_wn = self.acc_wn(*map(self.totensor_cpu, [p_wn, g_wn]))
+        self.acc_wn(*map(self.totensor_cpu, [p_wn, g_wn]))
+        self.pre_wn(*map(self.totensor_cpu, [p_wn, g_wn]))
+        self.rec_wn(*map(self.totensor_cpu, [p_wn, g_wn]))        
         
         for batch_idx, where_num in enumerate(g_wn):
-            batch_g_wo = g_wo[batch_idx]  # (where_num_gold,)
-            batch_wo = p_wo[batch_idx]  # (where_num_predict,)
-            acc_wo = self.acc_wo(*map(self.totensor_cpu, [batch_wo, batch_g_wo]))
+            
+            batch_g_wc = g_wc[batch_idx]
+            batch_wc = p_wc[batch_idx]
+            self.acc_wc(*map(self.totensor_cpu, [batch_wc, batch_g_wc]))
+            self.pre_wc(*map(self.totensor_cpu, [batch_wc, batch_g_wc]))
+            self.rec_wc(*map(self.totensor_cpu, [batch_wc, batch_g_wc]))
+            
+            batch_g_wo = g_wo[batch_idx]
+            batch_wo = p_wo[batch_idx]
+            self.acc_wo(*map(self.totensor_cpu, [batch_wo, batch_g_wo]))
+            self.pre_wo(*map(self.totensor_cpu, [batch_wo, batch_g_wo]))
+            self.rec_wo(*map(self.totensor_cpu, [batch_wo, batch_g_wo]))
+            
+            batch_g_wv_tkns = g_wv_tkns[batch_idx]
+            batch_wv_tkns = p_wv_tkns[batch_idx]
+            batch_wv_tkns, batch_g_wv_tkns = pad_metrics(
+                batch_wv_tkns, batch_g_wv_tkns, pad_idx=self.tokenizer_bert.pad_token_id
+            )
+            self.acc_wv(*map(self.totensor, [batch_wv_tkns, batch_g_wv_tkns]))
+            self.pre_wv(*map(self.totensor_cpu, [batch_wv_tkns, batch_g_wv_tkns]))
+            self.rec_wv(*map(self.totensor_cpu, [batch_wv_tkns, batch_g_wv_tkns]))
+    
+    def compute_all_metrics(self):
+        acc_sc = self.acc_sc.compute()
+        pre_sc = self.pre_sc.compute()
+        rec_sc = self.rec_sc.compute()
+
+        acc_sa = self.acc_sa.compute()
+        pre_sa = self.pre_sa.compute()
+        rec_sa = self.rec_sa.compute()
         
-    def pad_empty_predict_gold(self, predict, gold, pad_idx):
+        acc_wn = self.acc_wn.compute()
+        pre_wn = self.pre_wn.compute()
+        rec_wn = self.rec_wn.compute()
+        
+        acc_wc = self.acc_wc.compute()
+        pre_wc = self.pre_wc.compute()
+        rec_wc = self.rec_wc.compute()
+        
+        acc_wo = self.acc_wo.compute()
+        pre_wo = self.pre_wo.compute()
+        rec_wo = self.rec_wo.compute()
+        
+        acc_wv = self.acc_wv.compute()
+        pre_wv = self.pre_wv.compute()
+        rec_wv = self.rec_wv.compute()
+
+        pp_wv = self.pp_wv.compute()
+        
+        met_dict = {
+            "acc": [acc_sc, acc_sa, acc_wn, acc_wc, acc_wo, acc_wv],
+            "pre": [pre_sc, pre_sa, pre_wn, pre_wc, pre_wo, pre_wv],
+            "rec": [rec_sc, rec_sa, rec_wn, rec_wc, rec_wo, rec_wv],
+        }
+        
+        return met_dict
+    
+    def pad_metrics(self, predict, gold, pad_idx=999):
+        """
+        predict, gold = (B, where_num)
+        Case1 len(p) > len(g) 
+            -> just get len(g)
+            -> if g is empty, pad g to len(p)
+        Case2 len(p) < len(g) 
+            -> pad p
+        Case3 len(p) = len(g) 
+            -> if p & g is empty, pad only 1 with p & g
+        """
         res = []
-        for p, g in zip(predict, gold):            
-            if len(p) < len(g):
+        for p, g in zip(predict, gold):
+            if len(p) > len(g):
+                if len(g) == 0:
+                    g = [pad_idx] * len(p)
+                else:
+                    p = p[:len(g)]
+            elif len(p) < len(g):
                 p.extend([pad_idx]*(len(g)-len(p)))
-            elif len(p) > len(g):
-                g.extend([pad_idx]*(len(p)-len(g)))
+            else:
+                if len(p) == 0 and len(g) == 0:
+                    g = [pad_idx]
+                    p = [pad_idx]
 
             res.append([p, g])
 
-        return list(zip(*res))
+        return tuple(map(list, zip(*res)))
+    
+#     def pad_empty_predict_gold(self, predict, gold, pad_idx):
+#         res = []
+#         for p, g in zip(predict, gold):            
+#             if len(p) < len(g):
+#                 p.extend([pad_idx]*(len(g)-len(p)))
+#             elif len(p) > len(g):
+#                 g.extend([pad_idx]*(len(p)-len(g)))
+
+#             res.append([p, g])
+
+#         return list(zip(*res))
     
     def get_batch_data(self, data: List[Dict[str, Any]], table: Dict[str, Dict[str, List[Any]]], start_tkn="[S]", end_tkn="[E]", only_question=False) -> Tuple[List[str], List[str], List[Dict[str, Any]]]:
         """[summary]
@@ -361,14 +494,6 @@ class Text2SQL(pl.LightningModule):
         
         batch_sqls = [jsonl["sql"] for jsonl in data]
         return batch_qs, batch_ts, batch_sqls
-    
-    def compute_all_metrics(self):
-        acc_sc = self.acc_sc.compute()
-        acc_sa = self.acc_sa.compute()
-        acc_wn = self.acc_wn.compute()
-        acc_wo = self.acc_wo.compute()
-        pp_wv = self.pp_wv.compute()
-        return acc_sc, acc_sa, acc_wn, acc_wo, pp_wv
 
     def training_step(self, batch, batch_idx, optimizer_idx):
         batch_qs, batch_ts, batch_sqls = self.get_batch_data(batch, self.table_dict["train"], self.hparams.special_start_tkn, self.hparams.special_end_tkn)
@@ -380,14 +505,13 @@ class Text2SQL(pl.LightningModule):
             train=True
         )
         self.calculate_metrics(outputs, batch_sqls)
+        self.log("tr_loss_step", loss, on_step=True, on_epoch=True, prog_bar=True, logger=True)
 
-        acc_sc, acc_sa, acc_wn, acc_wo, pp_wv = self.compute_all_metrics()
-        self.log("train_loss", loss, prog_bar=True, logger=True)
-        self.log("train_acc_sc", acc_sc, prog_bar=True, logger=True)
-        self.log("train_acc_sa", acc_sa, prog_bar=True, logger=True)
-        self.log("train_acc_wn", acc_wn, prog_bar=True, logger=True)
-        self.log("train_acc_wo", acc_wo, prog_bar=True, logger=True)
-        self.log("train_pp_wv", pp_wv, prog_bar=True, logger=True)
+#         met_dict = self.compute_all_metrics()
+#         its = ["sc", "sa", "wn", "wc", "wo", "wv"]
+#         for (metric, values) in met_dict.items():
+#             for idx, item in enumerate(its):
+#                 self.log(f"tr_{metric}_{item}", values[idx], on_step=True, on_epoch=True, prog_bar=True, logger=True)
 
         return  {"loss": loss}
 
@@ -396,9 +520,15 @@ class Text2SQL(pl.LightningModule):
         for out in outputs:
             loss += out["loss"].detach().cpu()
         loss = loss / len(outputs)
-
-        self.reset_metrics_epoch_end()
-        # return {"train_loss": loss, "train_acc_sc": acc_sc, "train_acc_sa": acc_sa, "train_acc_wn": acc_wn, "train_acc_wo": acc_wo, "train_pp_wv": pp_wv}
+        self.log("tr_loss", loss, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        
+        its = ["sc", "sa", "wn", "wc", "wo", "wv"]
+        met_dict = self.compute_all_metrics()
+        for (metric, values) in met_dict.items():
+            for idx, item in enumerate(its):
+                self.log(f"tr_{metric}_{item}", values[idx], on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        
+        # self.reset_metrics_epoch_end()
     
     def validation_step(self, batch, batch_idx):
         batch_qs, batch_ts, batch_sqls = self.get_batch_data(batch, self.table_dict["eval"], self.hparams.special_start_tkn, self.hparams.special_end_tkn)
@@ -418,15 +548,15 @@ class Text2SQL(pl.LightningModule):
         for out in outputs:
             loss += out["loss"].detach().cpu()
         loss = loss / len(outputs)
+        self.log("val_loss", loss, on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        
+        its = ["sc", "sa", "wn", "wc", "wo", "wv"]
+        met_dict = self.compute_all_metrics()
+        for (metric, values) in met_dict.items():
+            for idx, item in enumerate(its):
+                self.log(f"val_{metric}_{item}", values[idx], on_step=False, on_epoch=True, prog_bar=True, logger=True)
 
-        acc_sc, acc_sa, acc_wn, acc_wo, pp_wv = self.compute_all_metrics()
-        self.log("val_loss", loss, prog_bar=True, logger=True)
-        self.log("val_acc_sc", acc_sc, prog_bar=True, logger=True)
-        self.log("val_acc_sa", acc_sa, prog_bar=True, logger=True)
-        self.log("val_acc_wn", acc_wn, prog_bar=True, logger=True)
-        self.log("val_acc_wo", acc_wo, prog_bar=True, logger=True)
-        self.log("val_pp_wv", pp_wv, prog_bar=True, logger=True)
-        self.reset_metrics_epoch_end()
+        # self.reset_metrics_epoch_end()
 
     def load_data(self, sql_path: Union[Path, str], table_path: Union[Path, str]) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
         """Load data from path
