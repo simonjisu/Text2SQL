@@ -48,7 +48,7 @@ def train(args):
     )
     checkpoint_callback = pl.callbacks.ModelCheckpoint(
         dirpath=(Path(args.ckpt_dir) / args.task),
-        filename="epoch{epoch:02d}-{val_loss:.3f}-{val_acc_sc:.3f}-{val_acc_sa:.3f}-{val_acc_wn:.3f}-{val_acc_wc:.3f}-{val_acc_wo:.3f}-{val_acc_wv:.3f}",
+        filename="epoch{epoch:02d}-{val_loss:.3f}",
         monitor="val_loss",
         save_top_k=3,
         verbose=True,

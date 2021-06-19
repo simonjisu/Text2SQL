@@ -181,9 +181,11 @@ class WhereColumnDecoder(nn.Module):
         col_q_context, attn = self.col2question_attn(col_context, o_q, question_lengths, col_lengths, rt_attn)  # (B, T_c, H), (B, T_c, T_q)
         
         vec = torch.cat([col_q_context, col_context], dim=2)  # (B, T_c, 2H)
-        output = self.output_layer(vec)
+        output = self.output_layer(vec).squeeze(-1)  # (B, T_c)
+        for batch_idx, c_len in enumerate(col_lengths):
+            output[batch_idx, c_len:] = -1e3
         
-        return output.squeeze(-1), attn
+        return output, attn
     
     
 class WhereOpDecoder(nn.Module):

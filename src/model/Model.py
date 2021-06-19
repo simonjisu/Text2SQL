@@ -5,6 +5,7 @@ import json
 import torch
 import torch.nn as nn
 
+from tqdm import tqdm
 import transformers
 import torchmetrics
 import pytorch_lightning as pl
@@ -458,7 +459,7 @@ class Text2SQL(pl.LightningModule):
 
     def train_epoch_end(self, outputs):
         loss = 0 # torch.tensor(0, dtype=torch.float, device=self.device)
-        for out in outputs:
+        for out in tqdm(outputs, desc="calculating loss and metrics...", total=len(outputs)):
             loss += out["loss"].detach()
             m = out["metrics"]
 
@@ -504,7 +505,7 @@ class Text2SQL(pl.LightningModule):
 
     def validation_epoch_end(self, outputs):
         loss = 0 # torch.tensor(0, dtype=torch.float, device=self.device)
-        for out in outputs:
+        for out in tqdm(outputs, desc="calculating loss and metrics...", total=len(outputs)):
             loss += out["loss"].detach()
             m = out["metrics"]
 
