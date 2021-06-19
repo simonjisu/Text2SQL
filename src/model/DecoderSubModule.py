@@ -243,10 +243,10 @@ class WhereOpDecoder(nn.Module):
         for b in batches:
             where_col_nums = b.size(0)
             if where_col_nums < max_where_col_nums:
-                self.register_buffer("pad_zeros_context", torch.zeros((max_where_col_nums-where_col_nums), col_context.size(2)))
-                b_padded = torch.cat([b, self.pad_zeros_context.type_as(col_context)], dim=0)
+                # self.register_buffer("pad_zeros_context", torch.zeros((max_where_col_nums-where_col_nums), col_context.size(2)))
+                # b_padded = torch.cat([b, self.pad_zeros_context.type_as(col_context)], dim=0)
                 # Use Register Buffer to code following code for PyTroch Lightning
-                # b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), hidden_size, device=device).contiguous()], dim=0)
+                b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), col_context.size(2)).type_as(col_context).contiguous()], dim=0)
             else:
                 b_padded = b
             batches_padded.append(b_padded)  # (max_where_col_nums, hidden_size)
@@ -310,7 +310,7 @@ class WhereValueDecoder(nn.Module):
         col_context_padded = self.get_context_padded(col_context, where_col_idxes)  # (B, max_where_col_nums, H)
 
         col_q_context, attn = self.col2question_attn(col_context_padded, o_q, question_lengths, where_nums, rt_attn)  # (B, max_where_col_nums, H), (B, max_where_col_nums, T_q)
-        where_op_one_hot_padded = self.get_where_op_one_hot_padded(where_op_idxes, where_nums).type_as(col_padded)  # (B, max_where_col_nums, n_cond_ops)
+        where_op_one_hot_padded = self.get_where_op_one_hot_padded(where_op_idxes, where_nums, device=col_context.device)#.type_as(col_padded)  # (B, max_where_col_nums, n_cond_ops)
 
         where_op = self.where_op_linear(where_op_one_hot_padded)  # (B, max_where_col_nums, H)
 
@@ -394,37 +394,37 @@ class WhereValueDecoder(nn.Module):
         for b in batches:
             where_col_nums = b.size(0)
             if where_col_nums < max_where_col_nums:
-                self.register_buffer("pad_zeros_context", torch.zeros((max_where_col_nums-where_col_nums), col_context.size(2)))
-                b_padded = torch.cat([b, self.pad_zeros_context.type_as(col_context)], dim=0)
-                # b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), hidden_size, device=device).contiguous()], dim=0)
+                # self.register_buffer("pad_zeros_context", torch.zeros((max_where_col_nums-where_col_nums), col_context.size(2)))
+                # b_padded = torch.cat([b, self.pad_zeros_context.type_as(col_context)], dim=0)
+                b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), col_context.size(2)).type_as(col_context).contiguous()], dim=0)
             else:
                 b_padded = b
             batches_padded.append(b_padded)  # (max_where_col_nums, hidden_size)
         return torch.stack(batches_padded) # (B, max_where_col_nums, hidden_size)
     
-    def get_where_op_one_hot_padded(self, where_op_idxes: List[List[int]], where_nums: List[int]):
+    def get_where_op_one_hot_padded(self, where_op_idxes: List[List[int]], where_nums: List[int], device="cpu"):
         r"""
         Turn where operation indexs into one hot encoded vectors
         In case for have different where column lengths
         """
         max_where_col_nums = self.max_where_conds # max(where_nums)
-        batches = []
-        for where_num, batch_col in zip(where_nums, where_op_idxes):
-            scatter_idx = torch.LongTensor(batch_col).unsqueeze(1)
-            batch = torch.zeros(where_num, self.n_cond_ops).scatter(1, scatter_idx, 1)
-            batches.append(batch)
-        # batches = [
-        #     torch.zeros(where_num, n_cond_ops).scatter(1, torch.LongTensor(batch_col).unsqueeze(1), 1).to(device).contiguous() 
-        #     for where_num, batch_col in zip(where_nums, where_op_idxes)
-        # ]  
+        # batches = []
+        # for where_num, batch_col in zip(where_nums, where_op_idxes):
+        #     scatter_idx = torch.LongTensor(batch_col).unsqueeze(1)
+        #     batch = torch.zeros(where_num, self.n_cond_ops).scatter(1, scatter_idx, 1)
+        #     batches.append(batch)
+        batches = [
+            torch.zeros(where_num, self.n_cond_ops).scatter(1, torch.LongTensor(batch_col).unsqueeze(1), 1).to(device).contiguous() 
+            for where_num, batch_col in zip(where_nums, where_op_idxes)
+        ]  
         # batches = [(where_col_nums, n_cond_ops), ...]  len = B
         batches_padded = []
         for b in batches:
             where_col_nums = b.size(0)
             if where_col_nums < max_where_col_nums:
-                self.register_buffer("pad_zeros_where_op", torch.zeros((max_where_col_nums-where_col_nums), self.n_cond_ops))
-                b_padded = torch.cat([b, self.pad_zeros_where_op], dim=0)
-                # b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), n_cond_ops, device=device).contiguous()], dim=0)
+                # self.register_buffer("pad_zeros_where_op", torch.zeros((max_where_col_nums-where_col_nums), self.n_cond_ops))
+                # b_padded = torch.cat([b, self.pad_zeros_where_op], dim=0)
+                b_padded = torch.cat([b, torch.zeros((max_where_col_nums-where_col_nums), self.n_cond_ops, device=device).contiguous()], dim=0)
             else:
                 b_padded = b
             batches_padded.append(b_padded)  # (max_where_col_nums, hidden_size)

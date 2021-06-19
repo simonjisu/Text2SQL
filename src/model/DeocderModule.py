@@ -85,13 +85,13 @@ class Decoder(nn.Module):
     def predict_decoder(self, typ, **kwargs):
         r"""
         if not using teacher force model will use this function to predict answer
-        # Outputs Size
-        # sc = (B, T_c)
-        # sa = (B, n_agg_ops)
-        # wn = (B, max_where_conds+1)
-        # wc = (B, T_c): binary
-        # wo = (B, max_where_col_nums, n_cond_ops)
-        # wv = [(B, T_d_i, vocab_size)] x max_where_col_nums / T_d_i = may have different length for answer
+        Outputs Size:
+            - sc = (B, T_c)
+            - sa = (B, n_agg_ops)
+            - wn = (B, max_where_conds+1)
+            - wc = (B, T_c): binary
+            - wo = (B, max_where_col_nums, n_cond_ops)
+            - wv = [(B, T_d_i, vocab_size)] x max_where_col_nums / T_d_i = may have different length for answer
         """
         if typ == "sc":  # SELECT column
             select_outputs = kwargs["select_outputs"]
