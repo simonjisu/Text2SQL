@@ -59,7 +59,11 @@ def argument_parsing(preparse=False):
     parser.add_argument("-lr", "--lr", type=float, default=1e-3,
                    help="Decoder learning rate")
     parser.add_argument("-lrb", "--lr_bert", type=float, default=1e-5,
-                   help="BERT learning rate")  
+                   help="BERT learning rate")
+    parser.add_argument("-wddec", "--wd_decoder", type=float, default=1e-5,
+                   help="Decoder weight decay")
+    parser.add_argument("-wdbert", "--wd_bert", type=float, default=1e-5,
+                   help="BERT weight decay")  
     # Seed
     parser.add_argument("-sd", "--seed", type=int, default=88,
                    help="Seed Number")

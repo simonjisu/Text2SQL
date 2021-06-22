@@ -44,7 +44,9 @@ def train(args):
         
         # Optimizer
         lr = args.lr,
-        lr_bert = args.lr_bert
+        lr_bert = args.lr_bert,
+        wd_decoder = args.wd_decoder,
+        wd_bert = args.wd_bert
     )
     checkpoint_callback = pl.callbacks.ModelCheckpoint(
         dirpath=(Path(args.ckpt_dir) / args.task),
@@ -58,7 +60,7 @@ def train(args):
     # mlf_logger = pl.loggers.MLFlowLogger(tracking_uri=f"file:{args.log_dir}", experiment_name=args.task+"_mlf")
     earlystop_callback = pl.callbacks.EarlyStopping(
         "val_loss",
-        min_delta=0.1,
+        min_delta=2,
         patience=3,
         verbose=True,
         mode="min"

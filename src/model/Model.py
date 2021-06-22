@@ -607,9 +607,9 @@ class Text2SQL(pl.LightningModule):
     
     def configure_optimizers(self):
         opt = torch.optim.AdamW(filter(lambda p: p.requires_grad, self.model_decoder.parameters()),
-                                       lr=self.hparams.lr, weight_decay=0)
+                                       lr=self.hparams.lr, weight_decay=self.hparams.wd_decoder)
         opt_bert = torch.optim.AdamW(filter(lambda p: p.requires_grad, self.model_bert.parameters()),
-                                    lr=self.hparams.lr_bert, weight_decay=0)
+                                    lr=self.hparams.lr_bert, weight_decay=self.hparams.wd_bert)
         
         optimizers = [opt, opt_bert]
         return optimizers
