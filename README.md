@@ -43,7 +43,7 @@ tensorboard --logdir ./logs/ --bind_all --port 6006
 # TODO
 
 - [x] 06.10 - Train Model
-- [ ] Extend the dataset to all companies
+- [x] Extend the dataset to all companies
 - [ ] Improve Model
 - [ ] Code Refactoring
 - [ ] Get the original purpose: resolve the ambigious parts 
