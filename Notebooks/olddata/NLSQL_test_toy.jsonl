@@ -1,5 +1,0 @@
-{"phase": 1, "question": "2015 삼성전자 유동자산은 어떻게 돼?", "table_id": "receipts", "sql": {"sel": 16, "agg": 0, "conds": [[10, 0, "유동자산"], [3, 0, 2016]]}}
-{"phase": 1, "question": "삼성전자 2015 유동자산은 어떻게 돼?", "table_id": "receipts", "sql": {"sel": 16, "agg": 0, "conds": [[10, 0, "유동자산"], [3, 0, 2016]]}}
-{"phase": 1, "question": "2015 삼성전자 유동자산은 얼마야?", "table_id": "receipts", "sql": {"sel": 16, "agg": 0, "conds": [[10, 0, "유동자산"], [3, 0, 2016]]}}
-{"phase": 1, "question": "삼성전자 2015 유동자산은 얼마야?", "table_id": "receipts", "sql": {"sel": 16, "agg": 0, "conds": [[10, 0, "유동자산"], [3, 0, 2016]]}}
-{"phase": 1, "question": "2015 삼성전자 유동자산은 어때?", "table_id": "receipts", "sql": {"sel": 16, "agg": 0, "conds": [[10, 0, "유동자산"], [3, 0, 2016]]}}

@@ -128,12 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-Notebooks/private/*
-Notebooks/docs_cache/*
-Notebooks/data/*
-Notebooks/ckpt/*
+Notebooks/
 .DS_Store
 logs/*
 ckpt/*
 .vscode
-train.log
+src/*

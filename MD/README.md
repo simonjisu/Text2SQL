@@ -21,9 +21,14 @@
 |15|[A Comprehensive Exploration on WikiSQL with Table-Aware Word Contextualization](https://arxiv.org/abs/1902.01069)| [link](15.md) |
 |16|[Hybrid Ranking Network for Text-to-SQL](https://arxiv.org/abs/2008.04759)| |
 |17|[Execution Guided Neural Program Decoding](https://www.microsoft.com/en-us/research/uploads/prod/2018/07/Execution-Guided-Neural-Program-Decoding.pdf)| |
-
-# Applications
-
-- Photon(Salesforce AI Research): [http://naturalsql.com/](http://naturalsql.com/)
-    - `2021.04.12` NL queries is not working. SQL program is working.
-
+|18|[Towards Complex Text-to-SQL in Cross-Domain Database with Intermediate Representation](https://arxiv.org/abs/1905.08205) | |
+|19|[Natural Language Interfaces to Databases – An Introduction](https://arxiv.org/abs/cmp-lg/9503016)| |
+|20|[M-SQL: Multi-Task Representation Learning for Single-Table Text2sql Generation](https://ieeexplore.ieee.org/document/9020099)| |
+|21|[The history and recent advances of Natural Language Interfaces for Databases Querying](https://www.e3s-conferences.org/articles/e3sconf/pdf/2021/05/e3sconf_iccsre2021_01039.pdf)| | 
+|22|[ATHENA++: natural language querying for complex nested SQL queries](http://www.vldb.org/pvldb/vol13/p2747-sen.pdf)| |
+|23|[Natural language to SQL: Where are we today?](http://www.vldb.org/pvldb/vol13/p1737-kim.pdf)| |
+|24|[PICARD: Parsing Incrementally for Constrained Auto-Regressive Decoding from Language Models](https://arxiv.org/abs/2109.05093)| |
+|25|[GAP-text2SQL: Learning Contextual Representations for Semantic Parsing with Generation-Augmented Pre-Training](https://arxiv.org/abs/2012.10309)| |
+|26|[Global Reasoning over Database Structures for Text-to-SQL Parsing](https://arxiv.org/abs/1908.11214)| |
+|27|[(NatSQL)Natural SQL: Making SQL Easier to Infer from Natural Language Specifications](https://arxiv.org/abs/2109.05153)| |
+|28|[A Syntactic Neural Model for General-Purpose Code Generation](https://arxiv.org/abs/1704.01696)| |
