@@ -32,3 +32,7 @@
 |26|[Global Reasoning over Database Structures for Text-to-SQL Parsing](https://arxiv.org/abs/1908.11214)| |
 |27|[(NatSQL)Natural SQL: Making SQL Easier to Infer from Natural Language Specifications](https://arxiv.org/abs/2109.05153)| |
 |28|[A Syntactic Neural Model for General-Purpose Code Generation](https://arxiv.org/abs/1704.01696)| |
+|29|[Compositional Generalization and Natural Language Variation: Can a Semantic Parsing Approach Handle Both?](https://arxiv.org/abs/2010.12725)| |
+|30|[Structure-Grounded Pretraining for Text-to-SQL](https://arxiv.org/abs/2010.12773)| |
+|31|[Text-to-SQL in the Wild: A Naturally-Occurring Dataset Based on Stack Exchange Data](https://arxiv.org/abs/2106.05006v1)| |
+|32|[A Comparative Survey of Recent Natural Language Interfaces for Databases](https://arxiv.org/abs/1906.08990)| |
